@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="es">
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- JS includes -->
+    <script type="text/javascript">
+        if (document.location.protocol != 'https:') document.write('\x3Cscript src="js/jquery-1.8.3.min.js" type="text/javascript">\x3C/script>');
+
+    </script>
+    <script type="text/javascript">
+        window.jQuery || document.write('\x3Cscript src="scripts/jquery-1.8.3.min.js" type="text/javascript">\x3C/script>');
+
+    </script>
+    <script src="js/museutils.js?531812214" type="text/javascript"></script>
+    <script src="js/whatinput.js?84559013" type="text/javascript"></script>
+    <script src="js/jquery.musepolyfill.bgsize.js?120190942" type="text/javascript"></script>
+    <script src="js/jquery.watch.js?3866665977" type="text/javascript"></script>
+    <script src="js/jquery.musemenu.js?3902934130" type="text/javascript"></script>
+    <script src="js/webpro.js?4156477058" type="text/javascript"></script>
+    <script src="js/disableEverything.js"></script>
+    <!-- Other scripts -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+                    try {
+                        (function() {
+                            var a = {},
+                                b = function(a) {
+                                    if (a.match(/^rgb/)) return a = a.replace(/\s+/g, "").match(/([\d\,]+)/gi)[0].split(","), (parseInt(a[0]) << 16) + (parseInt(a[1]) << 8) + parseInt(a[2]);
+                                    if (a.match(/^\#/)) return parseInt(a.substr(1), 16);
+                                    return 0
+                                };
+                            (function() {
+                                $('link[type="text/css"]').each(function() {
+                                    var b = ($(this).attr("href") || "").match(/\/?css\/([\w\-]+\.css)\?(\d+)/);
+                                    b && b[1] && b[2] && (a[b[1]] = b[2])
+                                })
+                            })();
+                            (function() {
+                                $("body").append('<div class="version" style="display:none; width:1px; height:1px;"></div>');
+                                for (var c = $(".version"), d = 0; d < Muse.assets.required.length;) {
+                                    var f = Muse.assets.required[d],
+                                        g = f.match(/([\w\-\.]+)\.(\w+)$/),
+                                        k = g && g[1] ? g[1] : null,
+                                        g = g && g[2] ? g[2] : null;
+                                    switch (g.toLowerCase()) {
+                                        case "css":
+                                            k = k.replace(/\W/gi, "_").replace(/^([^a-z])/gi, "_$1");
+                                            c.addClass(k);
+                                            var g = b(c.css("color")),
+                                                h = b(c.css("background-color"));
+                                            g != 0 || h != 0 ? (Muse.assets.required.splice(d, 1), "undefined" != typeof a[f] && (g != a[f] >>> 24 || h != (a[f] & 16777215)) && Muse.assets.outOfDate.push(f)) : d++;
+                                            c.removeClass(k);
+                                            break;
+                                        case "js":
+                                            k.match(/^jquery-[\d\.]+/gi) &&
+                                                typeof $ != "undefined" ? Muse.assets.required.splice(d, 1) : d++;
+                                            break;
+                                        default:
+                                            throw Error("Unsupported file type: " + g);
+                                    }
+                                }
+                                c.remove();
+                                if (Muse.assets.outOfDate.length || Muse.assets.required.length) c = "Some files on the server may be missing or incorrect. Clear browser cache and try again. If the problem persists please contact website author.", (d = location && location.search && location.search.match && location.search.match(/muse_debug/gi)) && Muse.assets.outOfDate.length && (c += "\nOut of date: " + Muse.assets.outOfDate.join(",")), d && Muse.assets.required.length && (c += "\nMissing: " + Muse.assets.required.join(",")), alert(c)
+                            })()
+                        })(); /* body */
+                        Muse.Utils.transformMarkupToFixBrowserProblemsPreInit(); /* body */
+                        Muse.Utils.detectScreenResolution(); /* HiDPI screens */
+                        Muse.Utils.prepHyperlinks(true); /* body */
+                        Muse.Utils.resizeHeight('.browser_width'); /* resize height */
+                        Muse.Utils.requestAnimationFrame(function() {
+                            $('body').addClass('initialized');
+                        }); /* mark body as initialized */
+                        Muse.Utils.fullPage('#page'); /* 100% height page */
+                        Muse.Utils.initWidget('.MenuBar', ['#bp_infinity'], function(elem) {
+                            return $(elem).museMenu();
+                        }); /* unifiedNavBar */
+                        Muse.Utils.initWidget('#widgetu8772', ['#bp_infinity'], function(elem) {
+                            return new WebPro.Widget.Form(elem, {
+                                validationEvent: 'submit',
+                                errorStateSensitivity: 'high',
+                                fieldWrapperClass: 'fld-grp',
+                                formSubmittedClass: 'frm-sub-st',
+                                formErrorClass: 'frm-subm-err-st',
+                                formDeliveredClass: 'frm-subm-ok-st',
+                                notEmptyClass: 'non-empty-st',
+                                focusClass: 'focus-st',
+                                invalidClass: 'fld-err-st',
+                                requiredClass: 'fld-err-st',
+                                ajaxSubmit: true
+                            });
+                        }); /* #widgetu8772 */
+                        Muse.Utils.showWidgetsWhenReady(); /* body */
+                        Muse.Utils.transformMarkupToFixBrowserProblems(); /* body */
+                    }
+
+    </script>
+
+    <script>
+        $(function() {
+            $(document).disableEverything({
+
+                //Disable Mouse Right Click
+                disableRightClick: true, // true or false
+                rightClickMessage: 'Right Click is Disabled.', // Message Displayed when Someone Right Clicks
+
+                //Disable Possibility to Copy Text and Images
+                disableCopy: true, // true or false
+                copyMessage: 'Copying is not Allowed.', // Message Displayed at an Attempt to Copy
+
+                //Disable Possibility to Drag out Images with the Mouse from the Browser onto the Desktop
+                disableImageDragging: true, // true or false
+
+                //Disable Keyboard
+                disableKeyboard: true, // true or false
+
+                //Disable Scrolling
+                disableScroll: false // true or false
+
+            });
+        });
+
+    </script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-125024405-1');
+
+    </script>
+    <!-- Smartsupp Live Chat script -->
+    <script type="text/javascript">
+        var _smartsupp = _smartsupp || {};
+        _smartsupp.key = '561b393751f94f4a695096fd5d81590d316adcd5';
+        window.smartsupp || (function(d) {
+            var s, c, o = smartsupp = function() {
+                o._.push(arguments)
+            };
+            o._ = [];
+            s = d.getElementsByTagName('script')[0];
+            c = d.createElement('script');
+            c.type = 'text/javascript';
+            c.charset = 'utf-8';
+            c.async = true;
+            c.src = 'https://www.smartsuppchat.com/loader.js?';
+            s.parentNode.insertBefore(c, s);
+        })(document);
+
+    </script>
+
+    <title>FINFIX COLOMBIA | Contabilidad Online para tu empresa | Outsourcing Contable Online </title>
+    <meta charset="utf-8">
+    <!--[if IE]>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<![endif]-->
+    <meta name="description" content="Outsourcing Contable y Financiero Online en Tiempo Real para Colombia">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+    <!--[if lt IE 9]>
+		<script src="js/vendor/html5shiv.min.js"></script>
+		<script src="js/vendor/respond.min.js"></script>
+		<script src="js/vendor/jquery-1.12.4.min.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+    <!--[if lt IE 9]>
+		<div class="bg-danger text-center">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" class="highlight">upgrade your browser</a> to improve your experience.</div>
+	<![endif]-->
+
+    </div>
+    <!-- search modal -->
+    <div class="modal" tabindex="-1" role="dialog" aria-labelledby="search_modal" id="search_modal"> <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">
+                <i class="rt-icon2-cross2"></i>
+            </span>
+        </button>
+        <div class="widget widget_search">
+            <form method="get" class="searchform search-form form-inline" action="./">
+                <div class="form-group bottommargin_0"> <input type="text" value="" name="search" class="form-control" placeholder="Search keyword" id="modal-search-input"> </div> <button type="submit" class="theme_button">Search</button>
+            </form>
+        </div>
+    </div>
+    <!-- Unyson messages modal -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="messages_modal">
+        <div class="fw-messages-wrap ls with_padding">
+            <!-- Uncomment this UL with LI to show messages in modal popup to your user: -->
+            <!--
+		<ul class="list-unstyled">
+			<li>Message To User</li>
+		</ul>
+		-->
+        </div>
+    </div>
+    <!-- eof .modal -->
+    <!-- wrappers for visual page editor and boxed version of template -->
+    <div id="canvas">
+        <div id="box_wrapper">
+            <!-- template sections -->
+            <div class="top_sm_wrapper darkblue_gradient">
+                <div class="transparent_wrapper">
+                    <section class="page_toplogo toplogo_v1 ds blue_gradient section_padding_top_10 section_padding_bottom_10 columns_margin_0">
+                        <div class="container-fluid">
+                            <div class="row flex-wrap v-center">
+                                <div class="col-xs-12 col-md-3 text-center text-md-left"> <a href="./" class="logo">
+                                        <img src="images/logofinfixblanco.png" alt="">
+                                    </a> </div>
+                                <div class="col-xs-12 col-md-9 text-center text-md-right">
+                                    <div class="inline-content with_dividers darklinks">
+                                        <div>
+                                            <div class="inline-content"> <span class="hidden-md">
+                                                    <i class="tmi-map-marker highlight2 rightpadding_5" aria-hidden="true"></i>
+                                                    Calle 74 # 15-15, Bogotá, Colombia
+                                                </span> <span>
+                                                    <i class="tmi-envelope highlight2 rightpadding_5" aria-hidden="true"></i>
+                                                    <a href="mailto:info@example.com">finfix@finfix.co</a>
+                                                </span> </div>
+                                        </div>
+                                        <div> <a class="big" href="https://web.nubox.com.co/Login/Account/Login?ReturnUrl=%2fSistemaLogin">Acceso Clientes</a> </div>
+                                        <form id="frm_ePaycoCheckoutOpen" name="frm_ePaycoCheckoutOpen" method="post" action="https://secure.payco.co/checkoutopen.php"> 
+<input name="p_cust_id_cliente" type="hidden" value="27454">
+<input name="p_key" type="hidden" value="06a25aa3db84c66dc5d140370b3b538904369463">
+<input name="p_id_factura" type="hidden" value="">
+<input name="p_description" type="hidden" value="Asesoría Financiera y Contable">
+<input name="p_test_request" type="hidden" value="FALSE">
+<input name="p_url_respuesta" type="hidden" value="https://finfix.co/"> 
+<input name="p_url_confirmacion" type="hidden" value="https://finfix.co/"> 
+<input type="image" id="imagen" src="https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/boton_carro_de_compras_epayco5.png" />
+<input type="hidden" id="idboton" name="idboton" value="7682" />  
+</form>
+
+                                        <div> <a href="" class="search_modal_button header-button">
+                                                <i class="tmi-search"></i>
+                                            </a> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <header class="page_header header_v2 header_darkgrey darkblue_gradient toggler_relative">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="header_mainmenu">
+                                        <!-- Comienza Menu -->
+                                        <nav class="mainmenu_wrapper">
+                                            <ul class="mainmenu nav sf-menu">
+                                                <li class="active"> <a href="index.html"><span>INICIO</span></a></li>
+                                                <li> <a href="https://masinversion.com/tag/planes-planeacion-financiera-y-tributaria-ahorro-e-inversion/"><span>PLANES Y PRECIOS</span></a></li>
+                                                <li> <a href="index.html#about"><span>SOBRE FINFIX</span></a> </li>
+                                                <li> <a href="https://masinversion.com/"><span>BLOG</span></a> </li>
+                                                <li> <a href="https://api.whatsapp.com/send?phone=573017808363&text=Hola%20estoy%20interesado%20en%20FINFIX.CO%20quiero%20saber%20más"><span>CONTACTO</span></a></li>
+                                                <li> <a href="https://calendly.com/camilo-baquero"><span>AGENDAR REUNIÓN</span></a></li>
+
+                                            </ul>
+                                        </nav>
+                                        <!-- Termina Menu -->
+                                        <!-- header toggler --><span class="toggle_menu"><span></span></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </header>
+                </div>
+                <section class="intro_section page_mainslider ds darkblue_gradient all-scr-cover">
+                    <div class="flexslider" data-dots="true" data-nav="false">
+                        <ul class="slides">
+                            <li style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; z-index: 2;" class="flex-active-slide" data-thumb-alt="">
+                                <div class="slide-image-wrap" style="background-image: url(&quot;images/slide01.png&quot;);"> <img src="images/slide01.png" alt="" draggable="false"> </div>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="slide_description_wrapper">
+                                                <div class="slide_description">
+                                                    <div class="intro-layer to_animate animated fadeInUp" data-animation="fadeInUp" style="visibility: hidden;">
+                                                        <h1>Contabilidad Real Time <span class="thin">Online </span></h1>
+                                                    </div>
+                                                    <div class="intro-layer to_animate animated fadeInUp" data-animation="fadeInUp" style="visibility: hidden;">
+                                                         <p><b>Automatiza</b> el flujo Contable de tu empresa junto a nuestro apoyo Profesional. <b>Outsourcing Contable Online</b></p> + Software Contable ONLINE <b> GRATIS.</b>
+                                                    </div>
+                                                    <div class="intro-layer to_animate animated fadeInUp" data-animation="fadeInUp" style="visibility: hidden;">
+                                                        <div class="slide_buttons"> <a href="formulario.html" class="theme_button inverse min_width_button">Solicitar Prueba</a>
+                                                            <a href="https://firebasestorage.googleapis.com/v0/b/camilobaquero-209923.appspot.com/o/CONTABILIDAD-ONLINE-FACTURA-ELECTRONICA-FINFIX-COLOMBIA-comprimido.pdf?alt=media&token=ef6591ee-b48a-4303-8c99-e2979db2f770" class="theme_button min_width_button">Precios 2019</a> </div>
+                                                    </div>
+                                                </div>
+                                                <!-- eof .slide_description -->
+                                            </div>
+                                            <!-- eof .slide_description_wrapper -->
+                                        </div>
+                                        <!-- eof .col-* -->
+                                    </div>
+                                    <!-- eof .row -->
+                                </div>
+                                <!-- eof .container -->
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- eof flexslider -->
+                </section>
+            </div>
+            <section id="features" class="cs fluid_padding_0 columns_padding_0 columns_margin_0">
+                <div class="container-fluid">
+                    <div class="row flex-wrap v-content-equalize">
+                        <div class="col-xs-12 col-sm-6 col-md-4 text-center text-sm-left">
+                            <div class="with_padding big-padding bg_teaser after_cover gradient_bg_color1" style="background-image: url(images/banner1.jpg);"> <img src="images/banner1.jpg" alt="">
+                                <h3 class="topmargin_0">Consultoría<br> <span class="thin big">Contable</span></h3>
+
+                                <div class="toppadding_20"></div>
+                                <div class="toppadding_35 visible-lg"></div> <a href="formulario.html" class="text_button">Solicitar Consulta <i class="tmi-forward leftpadding_10"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 text-center text-sm-left">
+                            <div class="with_padding big-padding bg_teaser after_cover gradient_bg_color2" style="background-image: url(images/banner2.jpg);"> <img src="images/banner2.jpg" alt="">
+                                <h3 class="topmargin_0">Consultoría<br> <span class="thin big">Financiera</span></h3>
+
+                                <div class="toppadding_20"></div>
+                                <div class="toppadding_35 visible-lg"></div> <a href="formulario.html" class="text_button">Solicitar Consulta<i class="tmi-forward leftpadding_10"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-4 text-center text-sm-left">
+                            <div class="with_padding big-padding bg_teaser after_cover gradient_bg_color3" style="background-image: url(images/banner3.jpg);"> <img src="images/banner3.jpg" alt="">
+                                <h3 class="topmargin_0">Consultoría<br> <span class="thin big">Legal</span></h3>
+
+                                <div class="toppadding_20"></div>
+                                <div class="toppadding_35 visible-lg"></div> <a href="formulario.html" class="text_button">Solicitar Consulta <i class="tmi-forward leftpadding_10"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="about" class="ls ms background_cover section_padding_top_130 section_padding_bottom_130">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-7 col-lg-6 text-center text-sm-left"> <span class="above_heading highlight">Bienvenido a FINFIX.CO</span>
+                            <h2 class="section_header">¿Que hace FINFIX.CO?</h2>
+                            <p class="section_excerpt grey">Tus finanzas en orden <span class="highlight2">sin complicados registros contables</span>, lo hacemos fácil para ti.</p>
+                            <p class="fontsize_18">LA COMBINACIÓN PERFECTA ENTRE TECNOLOGÍA Y ATENCIÓN HUMANA APLICADA AL AREA CONTABLE Y ADMINISTRATIVA DE TU EMPRESA. LA MEJOR PLATAFORMA CON LOS MEJORES CONTADORES Y AUDITORES.
+                            </p>
+                            <div class="toppadding_10"></div>
+                            <div class="toppadding_15 visible-md visible-lg"></div>
+                            <p> <a href="formulario.html" class="theme_button min_width_button">Solicitar</a> </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="services" class="ls background_cover section_padding_top_130 section_padding_bottom_120">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="isotope_container isotope row masonry-layout columns_margin_bottom_50">
+                                <div class="isotope-item col-xs-12 col-md-6 col-lg-3 text-center">
+                                    <article class="teaser"> <a href="service-single.html">
+                                            <img src="images/service-icons/strategy.png" alt="">
+                                        </a>
+                                        <div class="toppadding_5"></div>
+                                        <h3 class="entry-title small"> <a href="formulario.html">Gestión Financiera</a> </h3>
+                                        <p>Somos un medico especialista para tus finanzas, le tomamos el pulso a tu negocio en tiempo real.</p>
+                                    </article>
+                                </div>
+                                <div class="isotope-item col-xs-12 col-md-6 col-lg-3 text-center">
+                                    <article class="teaser"> <a href="service-single.html">
+                                            <img src="images/service-icons/business.png" alt="">
+                                        </a>
+                                        <div class="toppadding_5"></div>
+                                        <h3 class="entry-title small"> <a href="formulario.html">Factura Electrónica</a> </h3>
+                                        <p>Implementación de la facturación electronica y automatización Contable.</p>
+                                    </article>
+                                </div>
+                                <div class="isotope-item col-xs-12 col-md-6 col-lg-3 text-center">
+                                    <article class="teaser"> <a href="service-single.html">
+                                            <img src="images/service-icons/marketing.png" alt="">
+                                        </a>
+                                        <div class="toppadding_5"></div>
+                                        <h3 class="entry-title small"> <a href="formulario.html">Planeación Financiera</a> </h3>
+                                        <p>Ingeniería Financiera y Actuaria aplicado a tu empresa. </p>
+                                    </article>
+                                </div>
+                                <div class="isotope-item col-xs-12 col-md-6 col-lg-3 text-center">
+                                    <article class="teaser"> <a href="service-single.html">
+                                            <img src="images/service-icons/optimize.png" alt="">
+                                        </a>
+                                        <div class="toppadding_5"></div>
+                                        <h3 class="entry-title small"> <a href="formulario.html">Optimización Tributaria</a> </h3>
+                                        <p>Expertos en Ingenieria Fiscal, estrategias de optimización tributaria.</p>
+                                    </article>
+                                </div>
+                                <div class="isotope-item col-xs-12 col-md-6 col-lg-3 text-center">
+                                    <article class="teaser"> <a href="formulario.html">
+                                            <img src="images/service-icons/studies.png" alt="">
+                                        </a>
+                                        <div class="toppadding_5"></div>
+                                        <h3 class="entry-title small"> <a href="formulario.html">NIIF</a> </h3>
+                                        <p>Outsourcing Contable con Normas Internacionales de Contabilidad.</p>
+                                    </article>
+                                </div>
+                                <div class="isotope-item col-xs-12 col-md-6 col-lg-3 text-center">
+                                    <article class="teaser"> <a href="formulario.html">
+                                            <img src="images/service-icons/research.png" alt="">
+                                        </a>
+                                        <div class="toppadding_5"></div>
+                                        <h3 class="entry-title small"> <a href="formulario.html">Automatización Contable</a> </h3>
+                                        <p>Automatización del sistema contable en tiempo real </p>
+                                    </article>
+                                </div>
+                                <div class="isotope-item col-xs-12 col-md-6 col-lg-3 text-center">
+                                    <article class="teaser"> <a href="service-single.html">
+                                            <img src="images/service-icons/growth.png" alt="">
+                                        </a>
+                                        <div class="toppadding_5"></div>
+                                        <h3 class="entry-title small"> <a href="formulario.html">Gestión Documental</a> </h3>
+                                        <p>Digitalización con plena validez legal y probatoria.</p>
+                                    </article>
+                                </div>
+                                <div class="isotope-item col-xs-12 col-md-6 col-lg-3 text-center">
+                                    <article class="teaser"> <a href="formulario.html">
+                                            <img src="images/service-icons/innovation.png" alt="">
+                                        </a>
+                                        <div class="toppadding_5"></div>
+                                        <h3 class="entry-title small"> <a href="service-single.html">Nomina</a> </h3>
+                                        <p>La forma más simple de gestionar tu nómina</p>
+                                    </article>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="featured-video" class="ds bs parallax overlay_color section_padding_top_130 section_padding_bottom_130">
+                <div class="toppadding_80"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 text-center"> <a href="images/finfixcolombialoggro.mp4" class="play_button" data-gal="prettyPhoto[gal-video]"><i class="fa fa-play" aria-hidden="true"></i><span></span></a>
+                            <div class="toppadding_30 visible-lg"></div>
+                            <h2 class="section_header big">VIDEO FINFIX</h2>
+                            <p class="under_heading grey">FINFIX.CO Outsourcing Contable</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="toppadding_50"></div>
+            </section>
+            <section id="partners" class="ls section_padding_top_115 section_padding_bottom_120">
+                <div class="container">
+                    <div class="row">
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="gallery" class="ds section_padding_bottom_90 overflow_visible">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="isotope_container isotope row masonry-layout columns_padding_0 columns_margin_0">
+                                <div class="isotope-item col-xs-12 col-sm-6 col-md-4">
+                                    <article class="vertical-item gallery-item content-absolute hover-content content-padding ds">
+                                        <div class="item-media"> <img src="images/gallery/15.jpg" alt=""> <a class="abs-link prettyPhoto" title="" data-gal="prettyPhoto[gal]" href="images/gallery/15.jpg"></a> </div>
+                                        <div class="item-content darkgrey_transparent_bg_color"> <span class="categories-links">
+                                                <a href="formulario.html">Contabilidad Automatica</a>
+                                            </span>
+                                            <h3 class="entry-title small"> <a href="formulario.html">Asesoria Financiera personalizada en el día a día de tu negocio.</a> </h3>
+                                        </div>
+                                    </article>
+                                </div>
+                                <div class="isotope-item col-xs-12 col-sm-6 col-md-4">
+                                    <article class="vertical-item gallery-item content-absolute hover-content content-padding ds">
+                                        <div class="item-media"> <img src="images/gallery/01.jpg" alt=""> <a class="abs-link prettyPhoto" title="" data-gal="prettyPhoto[gal]" href="images/gallery/01.jpg"></a> </div>
+                                        <div class="item-content darkgrey_transparent_bg_color"> <span class="categories-links">
+                                                <a href="formulario.html">Big Data para Pymes</a>
+                                            </span>
+                                            <h3 class="entry-title small"> <a href="formulario.html">Analizamos y encontramos nuevas oportunidades para tu empresa.</a> </h3>
+                                        </div>
+                                    </article>
+                                </div>
+                                <div class="isotope-item col-xs-12 col-sm-6 col-md-4">
+                                    <article class="vertical-item gallery-item content-absolute hover-content content-padding ds">
+                                        <div class="item-media"> <img src="images/gallery/02.jpg" alt=""> <a class="abs-link prettyPhoto" title="" data-gal="prettyPhoto[gal]" href="images/gallery/02.jpg"></a> </div>
+                                        <div class="item-content darkgrey_transparent_bg_color"> <span class="categories-links">
+                                                <a href="formulario.html">Empresa en la Nube</a>
+                                            </span>
+                                            <h3 class="entry-title small"> <a href="gallery-single.html">100% en la Nube, menores costos operativos, con precios competitivos con la mejor calidad.</a> </h3>
+                                        </div>
+                                    </article>
+                                </div>
+                                <div class="isotope-item col-xs-12 col-sm-6 col-md-4">
+                                    <article class="vertical-item gallery-item content-absolute hover-content content-padding ds">
+                                        <div class="item-media"> <img src="images/gallery/03.jpg" alt=""> <a class="abs-link prettyPhoto" title="" data-gal="prettyPhoto[gal]" href="images/gallery/03.jpg"></a> </div>
+                                        <div class="item-content darkgrey_transparent_bg_color"> <span class="categories-links">
+                                                <a href="formulario.html">Más tiempo libre</a>
+                                            </span>
+                                            <h3 class="entry-title small"> <a href="formulario.html">Más tiempo para tus hobbies, familia o para hacer crecer tu negocio.</a> </h3>
+                                        </div>
+                                    </article>
+                                </div>
+                                <div class="isotope-item col-xs-12 col-sm-6 col-md-4">
+                                    <article class="vertical-item gallery-item content-absolute hover-content content-padding ds">
+                                        <div class="item-media"> <img src="images/gallery/04.jpg" alt=""> <a class="abs-link prettyPhoto" title="" data-gal="prettyPhoto[gal]" href="images/gallery/04.jpg"></a> </div>
+                                        <div class="item-content darkgrey_transparent_bg_color"> <span class="categories-links">
+                                                <a href="formulario.html">Pago Mensual</a>
+                                            </span>
+                                            <h3 class="entry-title small"> <a href="formulario.html">Sin Licencias, sin letra pequeña.</a> </h3>
+                                        </div>
+                                    </article>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix toppadding_40"></div>
+                        <div class="clearfix toppadding_20 visible-sm"></div>
+                        <div class="clearfix toppadding_35 visible-md visible-lg"></div>
+                        <div class="col-xs-12 col-md-3 col-lg-2 text-center text-sm-left">
+                            <h2 class="section_header">¿Por qué FINFIX.CO</h2>
+                        </div>
+                        <div class="col-xs-12 col-sm-8 col-md-6 col-lg-7 text-center text-sm-left">
+                            <p class="grey">La solución más integral del mercado para
+                                administrar tu Negocio en Internet de forma fácil y segura de la mano de mejor asesoria contable y financiera. </p>
+                        </div>
+                        <div class="col-xs-12 col-smx-4 col-md-3 text-center text-sm-right"> <a href="formulario.html" class="theme_button min_width_button">Unirme a FINFIX.CO</a> </div>
+                    </div>
+                </div>
+            </section>
+            <section id="testimonials" class="ls ms background_cover section_padding_top_130 section_padding_bottom_125">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6 col-md-offset-6 text-center text-md-left">
+                            <h2 class="section_header">GARANTIA FINFIX.CO : Sin retraso en la entrega de tu información Financiera o tu mensualidad es GRATIS </h2>
+                            <hr class="divider_60_2">
+                            <div class="owl-carousel testimonials-owl-carousel" data-responsive-lg="1" data-responsive-md="1" data-responsive-sm="1" data-dots="true" data-nav="false">
+                                <div>
+                                    <div class="star-rating" title="Rated 4.00 out of 5"> <span style="width:80%">
+                                            <strong class="rating">4.00</strong> out of 5
+                                        </span> </div>
+                                    <blockquote>
+                                        <p>"La asesoria de FINFIX y su equipo cambio mi negocio por completo, pasamos de estar llenos de papeleo a tener un flujo de trabajo digital y eficiente</p>
+                                        <footer class="media inline-block">
+                                            <div class="media-left media-middle"> <img src="images/faces/01.jpg" alt=""> </div>
+                                            <div class="media-body media-middle"> <cite>
+                                                    Carolina Gómez, HomeParte
+                                                    <span class="highlight">Cliente FINFIX</span>
+                                                
+                                                </cite> </div>
+                                            
+                                        </footer>
+                                    </blockquote>
+                                </div>
+                                <div>
+                                    <div class="star-rating" title="Rated 9.00 out of 5"> <span style="width:100%">
+                                            <strong class="rating">5.00</strong> out of 5
+                                        </span> </div>
+                                    <blockquote>
+                                        <p>FINFIX tranformo nuestor negocio por completo, tenimos un contador que siempre entregaba atrasados los informes, nunca teniamos información actualizada, con FINFIX eso se acabo.</p>
+                                        <footer class="media inline-block">
+                                            <div class="media-left media-middle"> <img src="images/faces/02.jpg" alt=""> </div>
+                                            <div class="media-body media-middle"> <cite>
+                                                    Jorge Gonzalez, SteelSeries S.A.S
+                                                    <span class="highlight">Cliente FINFIX</span>
+                                                </cite> </div>
+                                        </footer>
+                                    </blockquote>
+                                </div>
+                                <div>
+                                    <div class="star-rating" title="Rated 4.50 out of 5"> <span style="width:90%">
+                                            <strong class="rating">4.50</strong> out of 5
+                                        </span> </div>
+                                    <blockquote>
+                                        <p>Con el servicio de Contabilidad Real Time de FINFIX tenemos el pulso de nuestro negocio día a día, asi podemos planear y reaccionar a tiempo ante cualquier imprevisto. </p>
+                                        <footer class="media inline-block">
+                                            <div class="media-left media-middle"> <img src="images/faces/03.jpg" alt=""> </div>
+                                            <div class="media-body media-middle"> <cite>
+                                                    Andres Hernandez, Colnami S.A
+                                                    <span class="highlight">Cliente FINFIX</span>
+                                                </cite> </div>
+                                        </footer>
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="features2" class="cs fluid_padding_0 columns_padding_0 columns_margin_0">
+                <div class="container-fluid">
+                    <div class="row flex-wrap v-content-equalize v-center-content">
+                        <div class="col-xs-12 col-sm-6 col-md-4 text-center text-sm-left">
+                            <div class="with_padding big-padding gradient_bg_color1">
+                                <div class="media inline-block xs-block-media">
+                                    <div class="media-left media-middle"> <img src="images/icons/appointment.png" alt=""> </div>
+                                    <div class="media-body media-middle"> <a href="formulario.html" class="text_button small">Agendar <i class="tmi-next leftpadding_5"></i></a>
+                                        <h3 class="topmargin_0">Reunión Virtual</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 text-center text-sm-left">
+                            <div class="with_padding big-padding gradient_bg_color2">
+                                <div class="media inline-block xs-block-media">
+                                    <div class="media-left media-middle"> <img src="images/icons/evaluation.png" alt=""> </div>
+                                    <div class="media-body media-middle"> <a href="formulario.html" class="text_button small">Registrate <i class="tmi-next leftpadding_5"></i></a>
+                                        <h3 class="topmargin_0">Prueba Gratis</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-4 text-center text-md-left">
+                            <div class="with_padding big-padding gradient_bg_color3">
+                                <div>
+                                    <div class="media inline-block xs-block-media">
+                                        <div class="media-left media-middle"> <img src="images/icons/pay.png" alt=""> </div>
+                                        <div class="media-body media-middle"> <a href="formulario.html" class="text_button small">Pago Online<i class="tmi-next leftpadding_5"></i></a>
+                                            <h3 class="topmargin_0">Pagar Finfix.co</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="counters" class="ls section_padding_top_130 section_padding_bottom_120 columns_margin_bottom_40">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xxs-12 col-xs-6 col-md-3">
+                            <div class="teaser text-center"> <img src="images/icons/counter-1.png" alt="">
+                                <h3 class="counter" data-from="0" data-to="2007" data-speed="2100">14.760</h3>
+                                <p><br>Horas de Trabajo<p>
+                            </div>
+                        </div>
+                        <div class="col-xxs-12 col-xs-6 col-md-3">
+                            <div class="teaser text-center"> <img src="images/icons/counter-2.png" alt="">
+                                <h3 class="counter" data-from="0" data-to="321" data-speed="2100">32</h3>
+                                <p>Profesionales<br>en nuestro equipo.</p>
+                            </div>
+                        </div>
+                        <div class="col-xxs-12 col-xs-6 col-md-3">
+                            <div class="teaser text-center"> <img src="images/icons/counter-3.png" alt="">
+                                <h3 class="counter-wrap"> <span class="counter" data-from="0" data-to="56" data-speed="2100"></span><span class="counter-add">6.470 GB</span> </h3>
+                                <p>En la Nube FINFIX.CO<br></p>
+                            </div>
+                        </div>
+                        <div class="col-xxs-12 col-xs-6 col-md-3">
+                            <div class="teaser text-center"> <img src="images/icons/counter-4.png" alt="">
+                                <h3 class="counter" data-from="0" data-to="3712" data-speed="2100">38</h3>
+                                <p>Empresas<br>confian en nosotros</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="team" class="ds section_padding_top_90 section_padding_bottom_90">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 text-center">
+                            <h2 class="section_header">Concentrate en tu negocio, FINFIX.CO se encarga de todo por ti</h2>
+                            <p class="grey">Creemos en las Pymes y emprendedores del País, creemos en los heroes que hacen crecer sus empresas, FINFIX.CO es el aliado estrategico para lograr cambiar el mundo con tu Empresa.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section id="quote-action" class="ls section_padding_top_75 section_padding_bottom_75 columns_margin_top_5 columns_margin_bottom_5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 text-center text-md-left">
+                            <div class="content-justify v-spacing v-center">
+                                <h2 class="section_header"> <span class="thin">¿Quieres saber como vamos a transformar tu negocio? <B>Solicita una Cotización</B> </h2>
+                                <div class="text-center text-md-right">
+                                    <div class="toppadding_20 hidden-lg"></div> <a href="formulario.html" class="theme_button min_width_button">Unete a FINFIX.CO</a>
+                                </div>
+                            </div>
+                            <div class="topmargin_minus_10"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- marker description and marker icon goes here -->
+
+
+            <div class="clearfix visible-xs visible-sm toppadding_60"></div>
+        </div>
+    </div>
+    </section>
+    <section id="footer-subscribe" class="ds section_padding_top_90 section_padding_bottom_90">
+
+    </section>
+    <footer class="page_footer ls section_padding_top_110 section_padding_bottom_130 columns_margin_bottom_40 columns_padding_30">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-lg-3 text-center text-sm-left">
+                    <div class="widget widget_about">
+                        <div cess="logo bottommargin_5"> <img src="images/logofinfix.png" alt=""> </div>
+                        <p>Plataforma Digital que organiza las finanzas de tu negocio junto a los mejores Asesores Financieros, Contables y Legales. Empieza ahora a transformar tu negocio.</p>
+                        <div class="page_social topmargin_25"> <a href="#" class="social-icon bg-icon rounded-icon socicon-linkedin"></a> <a href="#" class="social-icon bg-icon rounded-icon socicon-twitter"></a> <a href="#" class="social-icon bg-icon rounded-icon socicon-facebook"></a> <a href="#" class="social-icon bg-icon rounded-icon socicon-instagram"></a> </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-lg-3 text-center text-sm-left">
+                    <div class="widget widget_recent_entries">
+                        <h3 class="widget-title">BLOG</h3>
+                        <ul>
+                            <li>
+                                <p class="greylinks"> <a href="blog/blog.html">Actualidad legal, contable y financiera para tu empresa.</a> </p> <span class="entry-date small-text highlight">
+                                    <a href="blog/blog.html">
+                                        <time class="entry-date" datetime="2017-03-13T08:50:40+00:00">
+                                            jun 19, 2018
+                                        </time>
+                                    </a>
+                                </span>
+                            </li>
+                            <li>
+                                <p class="greylinks"> <a href="blog/blog.html">Lleva a tu empresa a otro nivel con FINFIX.CO</a> </p> <span class="entry-date small-text highlight">
+                                    <a href="blog/blog.html">
+                                        <time class="entry-date" datetime="2017-03-13T08:50:40+00:00">
+                                            jun 20, 2018
+                                        </time>
+                                    </a>
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-lg-3 text-center text-sm-left">
+                    <div class="widget widget_text">
+                        <h3 class="widget-title">Oficina</h3>
+                        <p class="bottommargin_15"> Calle 74 # 15 - 15 Bogotá, Colombia<br> <a href="mailto:#">finfix@finfix.co</a> <br> +57 3017808363 </p>
+                        <p> Lunes - Jueves: 9:00 - 18:00 <br> Viernes: 9:00 - 17:00 <br> Sabados: 10:00 - 14:00 </p>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-lg-3 text-center text-sm-left">
+                    <div class="widget widget_nav_menu highlghtlinks">
+                        <h3 class="widget-title">Mapa del Sitio</h3>
+                        <ul class="menu">
+                            <li> <a href="index.html">Inicio</a> </li>
+                            <li> <a href="blog/blog.html">Blog Finfix</a> </li>
+                            <li> <a href="https://login.loggro.com/ginebra/jsp/login/login.jsp">Ingreso Clientes</a> </li>
+                            <li> <a href="formulario.html">Registro Nuevos Clientes</a> </li>
+                            <li> <a href="https://login.loggro.com/ginebra/jsp/login/login.jsp">Acceso Plataforma FINFIX</a> </li>
+                            <li> <a href="https://api.whatsapp.com/send?phone=573502827266&text=Hola%20estoy%20interesado%20en%20FINFIX.CO%20quiero%20saber%20más">Contacto</a> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <section class="page_copyright ds section_padding_top_15 section_padding_bottom_15">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <p>&copy; 2018 FINFIX.CO. Todos los derechos .</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+    <!-- eof #box_wrapper -->
+    </div>
+    <!-- eof #canvas -->
+    <script src="js/compressed.js"></script>
+    <script src="js/selectize.min.js"></script>
+    <script src="js/main.js"></script>
+    <!-- Google Map Script -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTwYSMRGuTsmfl2z_zZDStYqMlKtrybxo"></script>
+</body>
+
+</html>
