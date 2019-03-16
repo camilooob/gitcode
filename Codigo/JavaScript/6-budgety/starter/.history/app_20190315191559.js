@@ -1,17 +1,17 @@
 //01-MODULOS INDIVIDUALES MODULO CONTROLADOR })();
 var controladorPresupuesto = (function () {
 
-    var Gasto = function (id, descripcion, valor) {
+    var Gastos = function (id, descri, valor) {
 
         this.id = id;
-        this.descripcion = descripcion;
+        this.descri = descri;
         this.valor = valor;
     };
 
-    var Ingreso = function (id, descripcion, valor) {
+    var Ingreso = function (id, descri, valor) {
 
         this.id = id;
-        this.descripcion = descripcion;
+        this.descri = descri;
         this.valor = valor;
     };
 
@@ -19,14 +19,14 @@ var controladorPresupuesto = (function () {
 
         todoslosItems: {
             income: [],
-            expenses: []
+            expence: []
 
         },
         totales: {
             income: 0,
-            expenses: 0
+            expence: 0
 
-        },
+        }
 
     };
     /// Aqui estamos recibiendo la informaciòn incial de la app
@@ -48,7 +48,7 @@ var controladorPresupuesto = (function () {
             // Creamos unn nuevo Item desde la info ingresada. 
             if (ty === 'income') {
                 nuevoItem = new Ingreso(ID, des, val);
-            } else if (ty === 'expenses') {
+            } else if (ty === 'expence') {
                 nuevoItem = new Gasto(ID, des, val);
             }
             // Agregamos al array los datos ingresados segun sean si es un inncome o expence        
@@ -57,8 +57,9 @@ var controladorPresupuesto = (function () {
             return nuevoItem;
 
         },
-
-
+        testing: function () {
+            console.log(data);
+        }
     };
 
     //some code
@@ -96,15 +97,14 @@ var controladorUI = (function () {
 
             if (type === 'income') {
                 element = DOMclasshtml.contenedorIngreso;
-                html = '<div class="item clearfix" id="income-%id%"><div class="item__description">%descripcion%</div><div class="right clearfix"><div class="item__value">%valor%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
-            } else if (type === 'expenses') {
+                html = '<div class="item clearfix" id="income-%id%"><div class="item__description">%descri%</div><div class="right clearfix"><div class="item__value">%valor%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
+            } else if (type === 'expences') {
                 element = DOMclasshtml.contenedorGasto;
-                html = '<div class="item clearfix" id="expense-%id%"><div class="item__description">%descripcion%</div><div class="right clearfix"><div class="item__value">%valor%</div><div class="item__percentage">21%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
+                html = '<div class="item clearfix" id="expense-%id%"><div class="item__description">%descri%</div><div class="right clearfix"><div class="item__value">%valor%</div><div class="item__percentage">21%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
             }
             // Remplazar el html con el cambio de info de la funcion connstructor Gasto
-            // No me queda claro porque el primero es Html y los otros dos tiene que ser newhtml, si todos se colocan como newhtml da error. 
-            newhtml = html.replace('%id%', obj.id);
-            newhtml = newhtml.replace('%descripcion%', obj.descripcion);
+            newhtml = newhtmlhtml.replace('%id%', obj.id);
+            newhtml = newhtmlhtml.replace('%descri%', obj.descri);
             newhtml = newhtml.replace('%valor%', obj.valor);
 
             // Insertar el html en el DOM 
@@ -142,12 +142,12 @@ var controladorApp = (function (contPresupuesto, contUI) {
         var DOM = controladorUI.tomarDOM(); // Tengo que poner los parentesis al final ya que esta haciedo una llamada.    
         //Seleccionamos el boton añadir con class del boton html que en este caso es .add__btn, luego le agregamos un escuchador de eventos para que ocurra algo cuando suceda el evento en este caso un click y luego la funcion que queremos que ejecute.  
         // evento para el click en el botonn add, hace lo que este escrito en cotnrolAddBoton
-        document.querySelector(DOM.entradaboton).addEventListener('click', controlAddItem);
+        document.querySelector(DOM.entradaboton).addEventListener('click', controlAddBoton);
         /// Evento para la tecla enter  hace lo que este escrito en cotnrolAddBoton  
         document.addEventListener('keypress', function (evento) {
             // 13 es el codigo de la tecla enter, asi solo funciona al presionar enter, keycode hace referencia ala tecla, en los navegadores viejos utilizan el comando which asi que utilziamos || que es or para decir que funcione en cualquiera de los dos casos. 
             if (evento.keyCode === 13 || evento.which === 13) {
-                controlAddItem();
+                controlAddBoton();
             }
 
         });
@@ -155,7 +155,7 @@ var controladorApp = (function (contPresupuesto, contUI) {
 
 
 
-    var controlAddItem = function () {
+    var controlAddBoton = function () {
         var entrada, nuevoItem;
         // Cuando alguien haga click en el boton + necesitamos
 
@@ -170,8 +170,8 @@ var controladorApp = (function (contPresupuesto, contUI) {
 
 
         // 03. Agregar el item a  UI para verlo.
-        //Lo que nos permite ver el gasto o ingres ode  forma visual 
-        controladorUI.agregarListaItem(nuevoItem, entrada.tipo);
+        //Lo que nos permite ver el gasto o ingres ode forma visual 
+        controladorUI.agregarListaItem(nuevoItem, input.type);
 
         // 04. Calcular el presupuesto.
 
@@ -184,7 +184,7 @@ var controladorApp = (function (contPresupuesto, contUI) {
     // Funciòn publica de iniciaciòn. Para iniciar los Event Listennner 
     return {
         init: function () {
-            console.log('La aplicación se inicio');
+            console.log('La aplicaciòn se inicio');
             configEventListener();
         }
     }

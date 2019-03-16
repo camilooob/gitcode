@@ -1,7 +1,7 @@
 //01-MODULOS INDIVIDUALES MODULO CONTROLADOR })();
 var controladorPresupuesto = (function () {
 
-    var Gasto = function (id, descripcion, valor) {
+    var Gastos = function (id, descripcion, valor) {
 
         this.id = id;
         this.descripcion = descripcion;

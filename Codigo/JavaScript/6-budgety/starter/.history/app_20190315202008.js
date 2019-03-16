@@ -1,7 +1,7 @@
 //01-MODULOS INDIVIDUALES MODULO CONTROLADOR })();
 var controladorPresupuesto = (function () {
 
-    var Gasto = function (id, descripcion, valor) {
+    var Gastos = function (id, descripcion, valor) {
 
         this.id = id;
         this.descripcion = descripcion;
@@ -47,9 +47,9 @@ var controladorPresupuesto = (function () {
 
             // Creamos unn nuevo Item desde la info ingresada. 
             if (ty === 'income') {
-                nuevoItem = new Ingreso(ID, des, val);
+                nuevoItem = new Ingreso(id, des, val);
             } else if (ty === 'expenses') {
-                nuevoItem = new Gasto(ID, des, val);
+                nuevoItem = new Gasto(id, des, val);
             }
             // Agregamos al array los datos ingresados segun sean si es un inncome o expence        
             data.todoslosItems[ty].push(nuevoItem);

@@ -1,7 +1,7 @@
 //01-MODULOS INDIVIDUALES MODULO CONTROLADOR })();
 var controladorPresupuesto = (function () {
 
-    var Gasto = function (id, descripcion, valor) {
+    var Gastos = function (id, descripcion, valor) {
 
         this.id = id;
         this.descripcion = descripcion;
@@ -19,14 +19,14 @@ var controladorPresupuesto = (function () {
 
         todoslosItems: {
             income: [],
-            expenses: []
+            expences: []
 
         },
         totales: {
             income: 0,
-            expenses: 0
+            expences: 0
 
-        },
+        }
 
     };
     /// Aqui estamos recibiendo la informaciòn incial de la app
@@ -48,7 +48,7 @@ var controladorPresupuesto = (function () {
             // Creamos unn nuevo Item desde la info ingresada. 
             if (ty === 'income') {
                 nuevoItem = new Ingreso(ID, des, val);
-            } else if (ty === 'expenses') {
+            } else if (ty === 'expences') {
                 nuevoItem = new Gasto(ID, des, val);
             }
             // Agregamos al array los datos ingresados segun sean si es un inncome o expence        
@@ -57,8 +57,9 @@ var controladorPresupuesto = (function () {
             return nuevoItem;
 
         },
-
-
+        testing: function () {
+            console.log(data);
+        }
     };
 
     //some code
@@ -96,8 +97,8 @@ var controladorUI = (function () {
 
             if (type === 'income') {
                 element = DOMclasshtml.contenedorIngreso;
-                html = '<div class="item clearfix" id="income-%id%"><div class="item__description">%descripcion%</div><div class="right clearfix"><div class="item__value">%valor%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
-            } else if (type === 'expenses') {
+                html = '<div class="item clearfix" id="income-%id%"><div class="item__description">%descripcionn%</div><div class="right clearfix"><div class="item__value">%valor%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
+            } else if (type === 'expences') {
                 element = DOMclasshtml.contenedorGasto;
                 html = '<div class="item clearfix" id="expense-%id%"><div class="item__description">%descripcion%</div><div class="right clearfix"><div class="item__value">%valor%</div><div class="item__percentage">21%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
             }

@@ -1,7 +1,7 @@
 //01-MODULOS INDIVIDUALES MODULO CONTROLADOR })();
 var controladorPresupuesto = (function () {
 
-    var Gasto = function (id, descripcion, valor) {
+    var Gastos = function (id, descripcion, valor) {
 
         this.id = id;
         this.descripcion = descripcion;
@@ -26,7 +26,7 @@ var controladorPresupuesto = (function () {
             income: 0,
             expenses: 0
 
-        },
+        }
 
     };
     /// Aqui estamos recibiendo la informaciòn incial de la app
@@ -94,10 +94,10 @@ var controladorUI = (function () {
             var html, newhtml;
             // 01- Crear html 
 
-            if (type === 'income') {
+            if (tipo === 'income') {
                 element = DOMclasshtml.contenedorIngreso;
                 html = '<div class="item clearfix" id="income-%id%"><div class="item__description">%descripcion%</div><div class="right clearfix"><div class="item__value">%valor%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
-            } else if (type === 'expenses') {
+            } else if (tipo === 'expenses') {
                 element = DOMclasshtml.contenedorGasto;
                 html = '<div class="item clearfix" id="expense-%id%"><div class="item__description">%descripcion%</div><div class="right clearfix"><div class="item__value">%valor%</div><div class="item__percentage">21%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
             }
