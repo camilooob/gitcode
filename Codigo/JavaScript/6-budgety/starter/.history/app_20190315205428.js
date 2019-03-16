@@ -119,13 +119,14 @@ var controladorUI = (function () {
 
 
         limpiadorDeCampos: function () {
-            var campos, camposArr;
+            var = campos, camposArr;
 
             campos = document.querySelectorAll(DOMclasshtml.entradaDescripcion + ', ' + DOMclasshtml.entradaDinero);
             camposArr = Array.prototype.slice.call(campos);
 
-            camposArr.forEach(function (current, index, array) {
+            camposArr.forEach(funcion(current, index, array) {
                 current.valor = "";
+
             });
             camposArr[0].focus();
 

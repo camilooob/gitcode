@@ -125,7 +125,7 @@ var controladorUI = (function () {
             camposArr = Array.prototype.slice.call(campos);
 
             camposArr.forEach(function (current, index, array) {
-                current.valor = "";
+                current.valor = " ";
             });
             camposArr[0].focus();
 

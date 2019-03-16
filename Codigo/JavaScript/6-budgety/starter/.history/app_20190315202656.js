@@ -119,18 +119,9 @@ var controladorUI = (function () {
 
 
         limpiadorDeCampos: function () {
-            var campos, camposArr;
 
-            campos = document.querySelectorAll(DOMclasshtml.entradaDescripcion + ', ' + DOMclasshtml.entradaDinero);
-            camposArr = Array.prototype.slice.call(campos);
-
-            camposArr.forEach(function (current, index, array) {
-                current.valor = "";
-            });
-            camposArr[0].focus();
 
         },
-
 
 
         ///Con esto hacemos el DOM publico para que sea consultado por otros metodos. 
@@ -186,9 +177,8 @@ var controladorApp = (function (contPresupuesto, contUI) {
         controladorUI.agregarListaItem(nuevoItem, entrada.tipo);
 
         // 04. Calcular el presupuesto.
-        // Limpiar los campos
 
-        controladorUI.limpiadorDeCampos();
+
 
 
         // 05. Mostrar el Presupuesto en UI para verlo. 
