@@ -70,8 +70,7 @@ var controladorUI = (function () {
                 tipo: document.querySelector(DOMclasshtml.entradaTipo).value, // Recibimos inc(+) or exp(-)
                 descripcion: document.querySelector(DOMclasshtml.entradaDescripcion)
                     .value, // Recibimos el texto descripciòn
-                //Es valor es un string y con ParseFloat lo convertimos en Numero
-                dinero: parseFloat(document.querySelector(DOMclasshtml.entradaDinero).value) // recibimos el valor
+                dinero: document.querySelector(DOMclasshtml.entradaDinero).value // recibimos el valor
                 // Esto es unn objeto que devuelve las tres propiedades
             };
         },
@@ -103,12 +102,11 @@ var controladorUI = (function () {
         limpiadorDeCampos: function () {
             var campos, camposArr;
 
-            campos = document.querySelectorAll(DOMclasshtml.entradaDescripcion + "," + DOMclasshtml.entradaDinero);
-
+            campos = document.querySelectorAll(DOMclasshtml.entradaDescripcion + ", " + DOMclasshtml.entradaDinero);
             camposArr = Array.prototype.slice.call(campos);
 
             camposArr.forEach(function (current, index, array) {
-                current.value = "";
+                current.entrada = "";
             });
             camposArr[0].focus();
         },
@@ -140,18 +138,6 @@ var controladorApp = (function (contPresupuesto, contUI) {
         });
     };
 
-    var actualizacionPresupuesto = function () {
-        // 01. Calcular el presupuesto.
-
-
-        // 02 Retornar el Presupuesto
-
-
-        // 03. Mostrar el Presupuesto en UI para verlo.
-
-
-    };
-
     var controlAddItem = function () {
         var entrada, nuevoItem;
         // Cuando alguien haga click en el boton + necesitamos
@@ -160,33 +146,24 @@ var controladorApp = (function (contPresupuesto, contUI) {
         // Con esta variable conectamos la funciòn de entrada de tezto con este modulo.
         entrada = controladorUI.tomarinfoentrada();
 
-        if (entrada.descripcion !== '' && !isNaN(entrada.dinero) && entrada.dinero > 0) {
-            // 02. Agregar el item a el conntrolador de presupuesto
-            // Llamamos el metodo agreItem de el Modulo Controlador de Presupuesto.
-            nuevoItem = controladorPresupuesto.agreItem(
-                entrada.tipo,
-                entrada.descripcion,
-                entrada.dinero
-            );
+        // 02. Agregar el item a el conntrolador de presupuesto
+        // Llamamos el metodo agreItem de el Modulo Controlador de Presupuesto.
+        nuevoItem = controladorPresupuesto.agreItem(
+            entrada.tipo,
+            entrada.descripcion,
+            entrada.dinero
+        );
 
-            // 03. Agregar el item a  UI para verlo.
-            //Lo que nos permite ver el gasto o ingres ode  forma visual
-            controladorUI.agregarListaItem(nuevoItem, entrada.tipo);
+        // 03. Agregar el item a  UI para verlo.
+        //Lo que nos permite ver el gasto o ingres ode  forma visual
+        controladorUI.agregarListaItem(nuevoItem, entrada.tipo);
 
+        // 04. Calcular el presupuesto.
+        // Limpiar los campos
 
-            //04. Limpiar los campos ( no esta funcionanndo no se porque =,()
+        controladorUI.limpiadorDeCampos();
 
-            controladorUI.limpiadorDeCampos();
-            // 05. Calcular y actualziar el presupuesto
-            actualizacionPresupuesto();
-
-        }
-
-
-
-
-
-
+        // 05. Mostrar el Presupuesto en UI para verlo.
     };
     // Funciòn publica de iniciaciòn. Para iniciar los Event Listennner
     return {

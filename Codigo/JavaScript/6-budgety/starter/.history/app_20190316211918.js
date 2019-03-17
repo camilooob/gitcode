@@ -160,31 +160,24 @@ var controladorApp = (function (contPresupuesto, contUI) {
         // Con esta variable conectamos la funciòn de entrada de tezto con este modulo.
         entrada = controladorUI.tomarinfoentrada();
 
-        if (entrada.descripcion !== '' && !isNaN(entrada.dinero) && entrada.dinero > 0) {
-            // 02. Agregar el item a el conntrolador de presupuesto
-            // Llamamos el metodo agreItem de el Modulo Controlador de Presupuesto.
-            nuevoItem = controladorPresupuesto.agreItem(
-                entrada.tipo,
-                entrada.descripcion,
-                entrada.dinero
-            );
+        // 02. Agregar el item a el conntrolador de presupuesto
+        // Llamamos el metodo agreItem de el Modulo Controlador de Presupuesto.
+        nuevoItem = controladorPresupuesto.agreItem(
+            entrada.tipo,
+            entrada.descripcion,
+            entrada.dinero
+        );
 
-            // 03. Agregar el item a  UI para verlo.
-            //Lo que nos permite ver el gasto o ingres ode  forma visual
-            controladorUI.agregarListaItem(nuevoItem, entrada.tipo);
-
-
-            //04. Limpiar los campos ( no esta funcionanndo no se porque =,()
-
-            controladorUI.limpiadorDeCampos();
-            // 05. Calcular y actualziar el presupuesto
-            actualizacionPresupuesto();
-
-        }
+        // 03. Agregar el item a  UI para verlo.
+        //Lo que nos permite ver el gasto o ingres ode  forma visual
+        controladorUI.agregarListaItem(nuevoItem, entrada.tipo);
 
 
+        //04. Limpiar los campos ( no esta funcionanndo no se porque =,()
 
-
+        controladorUI.limpiadorDeCampos();
+        // 05. Calcular y actualziar el presupuesto
+        actualizacionPresupuesto();
 
 
     };
