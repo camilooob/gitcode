@@ -66,34 +66,6 @@ var controladorPresupuesto = (function () {
             // Para que tengamos acceso a el objeto que acabamos de crear
             return nuevoItem;
         },
-        //Esto es un metodo qu se puede usar luego .borraritem() llamandolo
-        borarItem: function (type, id) {
-            var ids, index;
-            // para borrar necesitamos saber si es un gato o un ignreso y el id 
-            //data.todoslosItems[type][id];
-
-            //mapa leey devuelve una nueva matriz con la info requerida
-            ids = data.todoslosItems[type].map(function (current) {
-                return current.ids;
-
-            });
-            index = ids.indexOf(id);
-
-
-            if (index !== 1) {
-                data.allItems[type].splice(index, 1);
-
-            }
-        },
-
-
-
-
-
-
-
-
-
         calculoPresupuesto: function () {
             // Calculamos el total de los ingresos y gastos
             calcularTotal('expenses');
@@ -147,8 +119,7 @@ var controladorUI = (function () {
         presupuestoEtiqueta: ".budget__value",
         ingresoEtiqueta: ".budget__income--value",
         gastoEtiqueta: ".budget__expenses--value",
-        porcentajeEtiqueta: ".budget__expenses--percentage",
-        contenedor: ".container"
+        porcentajeEtiqueta: ".budget__expenses--percentage"
     };
 
     return {
@@ -244,12 +215,6 @@ var controladorApp = (function (contPresupuesto, contUI) {
                 controlAddItem();
             }
         });
-
-        document.querySelector(DOM.contenedor).addEventListener("click", controlBorrarItem);
-
-
-
-
     };
 
     var actualizacionPresupuesto = function () {
@@ -300,54 +265,10 @@ var controladorApp = (function (contPresupuesto, contUI) {
 
 
     };
-
-    var controlBorrarItem = function (evento) {
-        var itemID, splitID, type, ID;
-        // borbuja 
-        itemID = evento.target.parentNode.parentNode.parentNode.parentNode.id;
-
-        if (itemID) {
-            splitID = itemID.split('-');
-            type = splitID[0];
-            ID = parseInt(splitID[1]);
-            // 1. Borrar el item de la estructura de data
-
-            controladorPresupuesto.borarItem(type, ID);
-
-
-            // 2. Borrar el item de el UI
-
-
-
-            // 3. Actualizar y mostrar el nuevo presupuesto.
-
-
-
-
-
-
-
-
-        }
-
-
-
-    };
-
-
-
     // Funciòn publica de iniciaciòn. Para iniciar los Event Listennner
     return {
         init: function () {
             console.log("La aplicación se inicio");
-            //Pone el contador en cero 
-            controladorUI.mostrarPresupuesto({
-                presupuesto: 0,
-                totaling: 0,
-                totalgast: 0,
-                porcentajes: -1
-
-            });
             configEventListener();
         }
     };

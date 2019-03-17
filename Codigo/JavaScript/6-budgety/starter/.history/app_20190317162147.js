@@ -68,22 +68,16 @@ var controladorPresupuesto = (function () {
         },
         //Esto es un metodo qu se puede usar luego .borraritem() llamandolo
         borarItem: function (type, id) {
-            var ids, index;
             // para borrar necesitamos saber si es un gato o un ignreso y el id 
             //data.todoslosItems[type][id];
 
             //mapa leey devuelve una nueva matriz con la info requerida
-            ids = data.todoslosItems[type].map(function (current) {
+            var ids = data.todoslosItems[type].map(function (current) {
                 return current.ids;
 
             });
-            index = ids.indexOf(id);
 
 
-            if (index !== 1) {
-                data.allItems[type].splice(index, 1);
-
-            }
         },
 
 
@@ -309,10 +303,10 @@ var controladorApp = (function (contPresupuesto, contUI) {
         if (itemID) {
             splitID = itemID.split('-');
             type = splitID[0];
-            ID = parseInt(splitID[1]);
+            ID = splitID[1];
             // 1. Borrar el item de la estructura de data
 
-            controladorPresupuesto.borarItem(type, ID);
+
 
 
             // 2. Borrar el item de el UI

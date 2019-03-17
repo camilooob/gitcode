@@ -79,11 +79,6 @@ var controladorPresupuesto = (function () {
             });
             index = ids.indexOf(id);
 
-
-            if (index !== 1) {
-                data.allItems[type].splice(index, 1);
-
-            }
         },
 
 
@@ -309,10 +304,10 @@ var controladorApp = (function (contPresupuesto, contUI) {
         if (itemID) {
             splitID = itemID.split('-');
             type = splitID[0];
-            ID = parseInt(splitID[1]);
+            ID = splitID[1];
             // 1. Borrar el item de la estructura de data
 
-            controladorPresupuesto.borarItem(type, ID);
+
 
 
             // 2. Borrar el item de el UI
