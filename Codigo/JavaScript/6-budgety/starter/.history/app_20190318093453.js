@@ -73,7 +73,7 @@ var controladorPresupuesto = (function() {
         return current.ids;
       });
       index = ids.indexOf(id);
-
+∫
       if (index !== 1) {
         data.todoslosItems[type].splice(index, 1);
       }
