@@ -1,40 +1,32 @@
-//Comentarios
-// * todo es importante
-// ? es importante
-// ! es muy importante 
-// TODO: Pendiente por hacer
-
-
-// TODO:01-MODULOS INDIVIDUALES MODULO CONTROLADOR })();
-
-var controladorPresupuesto = (function () {
-  var Gasto = function (id, descripcion, valor, porcentaje) {
+//01-MODULOS INDIVIDUALES MODULO CONTROLADOR })();
+var controladorPresupuesto = (function() {
+  var Gasto = function(id, descripcion, valor, porcentaje) {
     this.id = id;
     this.descripcion = descripcion;
     this.valor = valor;
     this.porcentaje = -1;
   };
 
-  Gasto.prototype.calcuPorcentaje = function (totaling) {
+  Gasto.prototype.calculoPorcentajes = function(totaling) {
     if (totaling > 0) {
       this.porcentaje = Math.round((this.valor / totaling) * 100);
     } else {
-      this.porcentaje = -1;
+      this.percentage = -1;
     }
   };
 
-  Gasto.prototype.tomarPorcentajes = function () {
+  Gasto.prototype.tomarPorcentaje = function() {
     return this.porcentaje;
   };
 
-  var Ingreso = function (id, descripcion, valor) {
+  var Ingreso = function(id, descripcion, valor) {
     this.id = id;
     this.descripcion = descripcion;
     this.valor = valor;
   };
-  var calcularTotal = function (type) {
+  var calcularTotal = function(type) {
     var sum = 0;
-    data.todoslosItems[type].forEach(function (act) {
+    data.todoslosItems[type].forEach(function(act) {
       // Funciona asi  sum es 0 mas [200,400,100]
       // sum = 0 + 200 =
       // sum = 200 + 400
@@ -54,13 +46,13 @@ var controladorPresupuesto = (function () {
       income: 0,
       expenses: 0
     },
-    presupuesto: 0,
+    presup: 0,
     // Se pone -1 porque si no hay dATOS NO PUEDE EXISTIR PORCENTAJE, -1 HACE REFERENNCIA A QUE NO EXISTE
     porcentaje: -1
   };
   /// Aqui estamos recibiendo la informaciòn incial de la app
   return {
-    agreItem: function (ty, des, val) {
+    agreItem: function(ty, des, val) {
       var nuevoItem, ID;
       // ID es un codigo que agregamos a cad gasto o ingreso
       // Nuevo ID
@@ -84,13 +76,13 @@ var controladorPresupuesto = (function () {
       return nuevoItem;
     },
     //Esto es un metodo qu se puede usar luego .borraritem() llamandolo
-    borrarItem: function (type, id) {
+    borrarItem: function(type, id) {
       var ids, index;
       // para borrar necesitamos saber si es un gato o un ignreso y el id
       //data.todoslosItems[type][id];
 
       //mapa leey devuelve una nueva matriz con la info requerida
-      ids = data.todoslosItems[type].map(function (current) {
+      ids = data.todoslosItems[type].map(function(current) {
         return current.ids;
       });
       index = ids.indexOf(id);
@@ -100,12 +92,12 @@ var controladorPresupuesto = (function () {
       }
     },
 
-    calculoPresupuesto: function () {
+    calculoPresupuesto: function() {
       // Calculamos el total de los ingresos y gastos
       calcularTotal("expenses");
       calcularTotal("income");
       // Calculamos el presupuesto: ingresos - gastos
-      data.presupuesto = data.totales.income - data.totales.expenses;
+      data.presup = data.totales.income - data.totales.expenses;
       // Calculamos el porcentaje de ingresos que gastamos
       // Creamos la formula de porcentaje y redondeamos el valor con Math.round
 
@@ -118,21 +110,21 @@ var controladorPresupuesto = (function () {
       }
     },
 
-    calculoPorcentajes: function () {
-      data.todoslosItems.expenses.forEach(function (actual) {
-        actual.calcuPorcentaje(data.totales.income);
+    calculoPorcentajes: function() {
+      data.todoslosItems.expenses.forEach(function(actual) {
+        actual.calculoPorcentajes(data.totales.income);
       });
     },
 
-    tomarPorcentaje: function () {
-      var todosPorce = data.todoslosItems.expenses.map(function (actual) {
-        return actual.tomarPorcentajes();
+    tomarPorcentaje: function() {
+      var todosPorce = data.todoslosItems.expenses.map(function(actual) {
+        return actual.tomarPorcentaje();
       });
 
       return todosPorce;
     },
 
-    tomarPresupuesto: function () {
+    tomarPresupuesto: function() {
       return {
         presupuesto: data.presupuesto,
         totaling: data.totales.income,
@@ -142,7 +134,7 @@ var controladorPresupuesto = (function () {
     },
 
     //Con esto testeamos la aplicaciòn con el comando controladordepresupuesto.testinng() enn la consola de javascript
-    testing: function () {
+    testing: function() {
       console.log(data);
     }
   };
@@ -150,9 +142,8 @@ var controladorPresupuesto = (function () {
   //some code
 })();
 
-// TODO: 02-MODULO CONNTROLADOR INTERFAS USUARIO UI })();
-
-var controladorUI = (function () {
+//02-MODULO CONNTROLADOR INTERFAS USUARIO UI })();
+var controladorUI = (function() {
   // DOM es el que inntereactua con html y javascriot
   var DOMclasshtml = {
     entradaTipo: ".add__type",
@@ -165,46 +156,12 @@ var controladorUI = (function () {
     ingresoEtiqueta: ".budget__income--value",
     gastoEtiqueta: ".budget__expenses--value",
     porcentajeEtiqueta: ".budget__expenses--percentage",
-    contenedor: ".container",
-    gastosPorcentajeEtiqueta: ".item__percentage",
-    fechaEtiqueta: ".budget__title--month"
-  };
-
-  var formatoNumero = function (num, type) {
-    var numSplit;
-    num = Math.abs(num);
-    // Pone dos decimales a los numeros y los redondea dejando dos decimales
-    num = num.toFixed(2);
-
-    numSplit = num.split('.');
-
-    int = numSplit[0];
-    if (int.length > 3) {
-      //comienza en la posicion cero y lee un caracter luego vamos a la posicion 1 y leemos 3 numeros 
-      int = int.substr(0, int.length - 3) + ',' + int.substr(int.length - 3, int.length); // si el numero es 2310  ,  resultado es 2,310
-
-    }
-
-    dec = numSplit[1];
-
-
-    return (type === "expenses" ? '-' : '+') + ' ' + int + '.' + dec;
-
-  };
-
-  var nodeListForEach = function (list, callback) {
-    for (var i = 0; i < list.length; i++) {
-      callback(list[i], i);
-
-
-
-    }
-
+    contenedor: ".container"
   };
 
   return {
     // funcion que recibe el tipo de valor, la descripciòn y dinero.
-    tomarinfoentrada: function () {
+    tomarinfoentrada: function() {
       return {
         tipo: document.querySelector(DOMclasshtml.entradaTipo).value, // Recibimos inc(+) or exp(-)
         descripcion: document.querySelector(DOMclasshtml.entradaDescripcion)
@@ -217,7 +174,7 @@ var controladorUI = (function () {
       };
     },
 
-    agregarListaItem: function (obj, type) {
+    agregarListaItem: function(obj, type) {
       var html, newhtml;
       // 01- Crear html
 
@@ -234,21 +191,21 @@ var controladorUI = (function () {
       // No me queda claro porque el primero es Html y los otros dos tiene que ser newhtml, si todos se colocan como newhtml da error.
       newhtml = html.replace("%id%", obj.id);
       newhtml = newhtml.replace("%descripcion%", obj.descripcion);
-      newhtml = newhtml.replace("%valor%", formatoNumero(obj.valor, type));
+      newhtml = newhtml.replace("%valor%", obj.valor);
 
       // Insertar el html en el DOM
       // esto hace que todo nuestra innfo se inserte en los contenedores de lista de ingresos y gastos.
       document.querySelector(element).insertAdjacentHTML("beforeend", newhtml);
     },
 
-    borrarListaItem: function (selectorID) {
+    borrarListaItem: function(selectorID) {
       // https://blog.garstasio.com/you-dont-need-jquery/dom-manipulation/ Removing Elements
       document
         .getElementById(selectorID)
         .parentNode.removeChild(document.getElementById(selectorID));
     },
 
-    limpiadorDeCampos: function () {
+    limpiadorDeCampos: function() {
       var campos, camposArr;
 
       campos = document.querySelectorAll(
@@ -257,24 +214,19 @@ var controladorUI = (function () {
 
       camposArr = Array.prototype.slice.call(campos);
 
-      camposArr.forEach(function (current, index, array) {
+      camposArr.forEach(function(current, index, array) {
         current.value = "";
       });
       camposArr[0].focus();
     },
 
-
-
-    mostrarPresupuesto: function (objeto) {
-
-      objeto.presupuesto > 0 ? type = "income" : type = "expense";
-
+    mostrarPresupuesto: function(objeto) {
       document.querySelector(DOMclasshtml.presupuestoEtiqueta).textContent =
-        formatoNumero(objeto.presupuesto, type);
+        objeto.presupuesto;
       document.querySelector(DOMclasshtml.ingresoEtiqueta).textContent =
-        formatoNumero(objeto.totaling, "income");
+        objeto.totaling;
       document.querySelector(DOMclasshtml.gastoEtiqueta).textContent =
-        formatoNumero(objeto.totalgast, "expense");
+        objeto.totalgast;
 
       if (objeto.porcentajes > 0) {
         document.querySelector(DOMclasshtml.porcentajeEtiqueta).textContent =
@@ -284,78 +236,9 @@ var controladorUI = (function () {
           "---";
       }
     },
-    mostrarPorcentajes: function (porcentajes) {
-
-      var campos = document.querySelectorAll(DOMclasshtml.gastosPorcentajeEtiqueta);
-
-
-
-      nodeListForEach(campos, function (actual, index) {
-        //Do someting 
-        if (porcentajes[index] > 0) {
-          actual.textContent = porcentajes[index] + "%";
-
-
-        } else {
-          actual.textContent = "---";
-        }
-
-
-
-
-      });
-
-
-
-
-    },
-
-
-    mostrarFecha: function () {
-      var now, month, year;
-
-
-      now = new Date(); // Este metodo ya esta definnido en JS
-
-
-      meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
-
-
-
-      month = now.getMonth();
-      year = now.getFullYear(); // este metodo ya esta definido en Javascritp, por eso lo dejo en ingles
-      document.querySelector(DOMclasshtml.fechaEtiqueta).textContent = meses[month] + ' ' + year;
-
-
-
-    },
-
-    cambiarTipo: function () {
-
-      var campos = document.querySelectorAll(
-
-        DOMclasshtml.entradaTipo + ',' +
-        DOMclasshtml.entradaDescripcion + ',' +
-        DOMclasshtml.entradaDinero
-
-      );
-      // Cambimos el color a rojo de los campos cuando cambiar el estado 
-      nodeListForEach(campos, function (actual) {
-
-        actual.classList.toggle('red-focus');
-
-
-      });
-      // Cambiarmos el boton a rojo tambien
-
-      document.querySelector(DOMclasshtml.entradaboton).classList.toggle('red');
-
-
-
-    },
 
     ///Con esto hacemos el DOM publico para que sea consultado por otros metodos.
-    tomarDOM: function () {
+    tomarDOM: function() {
       return DOMclasshtml;
     }
   };
@@ -363,9 +246,9 @@ var controladorUI = (function () {
   //some code
 })();
 
-//TODO:03-MODULO CONTROLADOR APP PRINCIPAL
-var controladorApp = (function (contPresupuesto, contUI) {
-  var configEventListener = function () {
+//03-MODULO CONTROLADOR APP PRINCIPAL
+var controladorApp = (function(contPresupuesto, contUI) {
+  var configEventListener = function() {
     var DOM = controladorUI.tomarDOM(); // Tengo que poner los parentesis al final ya que esta haciedo una llamada.
     //Seleccionamos el boton añadir con class del boton html que en este caso es .add__btn, luego le agregamos un escuchador de eventos para que ocurra algo cuando suceda el evento en este caso un click y luego la funcion que queremos que ejecute.
     // evento para el click en el botonn add, hace lo que este escrito en cotnrolAddBoton
@@ -373,23 +256,19 @@ var controladorApp = (function (contPresupuesto, contUI) {
       .querySelector(DOM.entradaboton)
       .addEventListener("click", controlAddItem);
     /// Evento para la tecla enter  hace lo que este escrito en cotnrolAddBoton
-    document.addEventListener("keypress", function (evento) {
+    document.addEventListener("keypress", function(evento) {
       // 13 es el codigo de la tecla enter, asi solo funciona al presionar enter, keycode hace referencia ala tecla, en los navegadores viejos utilizan el comando which asi que utilziamos || que es or para decir que funcione en cualquiera de los dos casos.
       if (evento.keyCode === 13 || evento.which === 13) {
         controlAddItem();
       }
     });
 
-    document.querySelector(DOM.contenedor).addEventListener("click", controlBorrarItem);
-
-    document.querySelector(DOM.entradaTipo).addEventListener("change", controladorUI.cambiarTipo);
-
-
-
-
+    document
+      .querySelector(DOM.contenedor)
+      .addEventListener("click", controlBorrarItem);
   };
 
-  var actualizacionPorcentajes = function () {
+  var actualizacionPorcentajes = function() {
     // 01. Calcular el porcentaje
     controladorPresupuesto.calculoPorcentajes();
 
@@ -399,10 +278,10 @@ var controladorApp = (function (contPresupuesto, contUI) {
 
     //03. Actualizar ui
 
-    controladorUI.mostrarPorcentajes(porcentajes);
+    console.log(porcentajes);
   };
 
-  var actualizacionPresupuesto = function () {
+  var actualizacionPresupuesto = function() {
     // 01. Calcular el presupuesto.
     controladorPresupuesto.calculoPresupuesto();
 
@@ -413,7 +292,7 @@ var controladorApp = (function (contPresupuesto, contUI) {
     controladorUI.mostrarPresupuesto(presupuesto);
   };
 
-  var controlAddItem = function () {
+  var controlAddItem = function() {
     var entrada, nuevoItem;
     // Cuando alguien haga click en el boton + necesitamos
 
@@ -434,7 +313,6 @@ var controladorApp = (function (contPresupuesto, contUI) {
         entrada.dinero
       );
 
-
       // 03. Agregar el item a  UI para verlo.
       //Lo que nos permite ver el gasto o ingres ode  forma visual
       controladorUI.agregarListaItem(nuevoItem, entrada.tipo);
@@ -442,14 +320,12 @@ var controladorApp = (function (contPresupuesto, contUI) {
       //04. Limpiar los campos ( no esta funcionanndo no se porque =,()
 
       controladorUI.limpiadorDeCampos();
-      // 05. Calcular y actualzar el presupuesto
+      // 05. Calcular y actualziar el presupuesto
       actualizacionPresupuesto();
-      // 06. Actualizar Presupuesto.
-      actualizacionPorcentajes();
     }
   };
 
-  var controlBorrarItem = function (evento) {
+  var controlBorrarItem = function(evento) {
     var itemID, splitID, type, ID;
     // borbuja
     itemID = evento.target.parentNode.parentNode.parentNode.parentNode.id;
@@ -477,10 +353,9 @@ var controladorApp = (function (contPresupuesto, contUI) {
 
   // Funciòn publica de iniciaciòn. Para iniciar los Event Listennner
   return {
-    init: function () {
+    init: function() {
       console.log("La aplicación se inicio");
       //Pone el contador en cero
-      controladorUI.mostrarFecha();
       controladorUI.mostrarPresupuesto({
         presupuesto: 0,
         totaling: 0,

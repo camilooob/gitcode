@@ -348,7 +348,7 @@ var controladorUI = (function () {
       });
       // Cambiarmos el boton a rojo tambien
 
-      document.querySelector(DOMclasshtml.entradaboton).classList.toggle('red');
+      document.querySelector(DOMclasshtml.entradaboton).classList.toggle();
 
 
 

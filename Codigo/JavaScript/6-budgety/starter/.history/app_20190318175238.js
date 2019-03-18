@@ -167,7 +167,7 @@ var controladorUI = (function () {
     porcentajeEtiqueta: ".budget__expenses--percentage",
     contenedor: ".container",
     gastosPorcentajeEtiqueta: ".item__percentage",
-    fechaEtiqueta: ".budget__title--month"
+    FechaEtiqueta: ".budget__title--month"
   };
 
   var formatoNumero = function (num, type) {
@@ -189,16 +189,6 @@ var controladorUI = (function () {
 
 
     return (type === "expenses" ? '-' : '+') + ' ' + int + '.' + dec;
-
-  };
-
-  var nodeListForEach = function (list, callback) {
-    for (var i = 0; i < list.length; i++) {
-      callback(list[i], i);
-
-
-
-    }
 
   };
 
@@ -288,7 +278,15 @@ var controladorUI = (function () {
 
       var campos = document.querySelectorAll(DOMclasshtml.gastosPorcentajeEtiqueta);
 
+      var nodeListForEach = function (list, callback) {
+        for (var i = 0; i < list.length; i++) {
+          callback(list[i], i);
 
+
+
+        }
+
+      };
 
       nodeListForEach(campos, function (actual, index) {
         //Do someting 
@@ -312,47 +310,16 @@ var controladorUI = (function () {
 
 
     mostrarFecha: function () {
-      var now, month, year;
+      var now, year;
 
 
-      now = new Date(); // Este metodo ya esta definnido en JS
-
-
-      meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
-
-
-
-      month = now.getMonth();
-      year = now.getFullYear(); // este metodo ya esta definido en Javascritp, por eso lo dejo en ingles
-      document.querySelector(DOMclasshtml.fechaEtiqueta).textContent = meses[month] + ' ' + year;
+      now = new Fecha();
+      year = now.tomarFullYear;
 
 
 
-    },
 
-    cambiarTipo: function () {
-
-      var campos = document.querySelectorAll(
-
-        DOMclasshtml.entradaTipo + ',' +
-        DOMclasshtml.entradaDescripcion + ',' +
-        DOMclasshtml.entradaDinero
-
-      );
-      // Cambimos el color a rojo de los campos cuando cambiar el estado 
-      nodeListForEach(campos, function (actual) {
-
-        actual.classList.toggle('red-focus');
-
-
-      });
-      // Cambiarmos el boton a rojo tambien
-
-      document.querySelector(DOMclasshtml.entradaboton).classList.toggle('red');
-
-
-
-    },
+    }
 
     ///Con esto hacemos el DOM publico para que sea consultado por otros metodos.
     tomarDOM: function () {
@@ -380,13 +347,9 @@ var controladorApp = (function (contPresupuesto, contUI) {
       }
     });
 
-    document.querySelector(DOM.contenedor).addEventListener("click", controlBorrarItem);
-
-    document.querySelector(DOM.entradaTipo).addEventListener("change", controladorUI.cambiarTipo);
-
-
-
-
+    document
+      .querySelector(DOM.contenedor)
+      .addEventListener("click", controlBorrarItem);
   };
 
   var actualizacionPorcentajes = function () {
@@ -480,7 +443,6 @@ var controladorApp = (function (contPresupuesto, contUI) {
     init: function () {
       console.log("La aplicación se inicio");
       //Pone el contador en cero
-      controladorUI.mostrarFecha();
       controladorUI.mostrarPresupuesto({
         presupuesto: 0,
         totaling: 0,

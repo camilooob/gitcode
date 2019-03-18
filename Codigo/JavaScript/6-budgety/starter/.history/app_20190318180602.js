@@ -192,16 +192,6 @@ var controladorUI = (function () {
 
   };
 
-  var nodeListForEach = function (list, callback) {
-    for (var i = 0; i < list.length; i++) {
-      callback(list[i], i);
-
-
-
-    }
-
-  };
-
   return {
     // funcion que recibe el tipo de valor, la descripciòn y dinero.
     tomarinfoentrada: function () {
@@ -288,7 +278,15 @@ var controladorUI = (function () {
 
       var campos = document.querySelectorAll(DOMclasshtml.gastosPorcentajeEtiqueta);
 
+      var nodeListForEach = function (list, callback) {
+        for (var i = 0; i < list.length; i++) {
+          callback(list[i], i);
 
+
+
+        }
+
+      };
 
       nodeListForEach(campos, function (actual, index) {
         //Do someting 
@@ -330,30 +328,6 @@ var controladorUI = (function () {
 
     },
 
-    cambiarTipo: function () {
-
-      var campos = document.querySelectorAll(
-
-        DOMclasshtml.entradaTipo + ',' +
-        DOMclasshtml.entradaDescripcion + ',' +
-        DOMclasshtml.entradaDinero
-
-      );
-      // Cambimos el color a rojo de los campos cuando cambiar el estado 
-      nodeListForEach(campos, function (actual) {
-
-        actual.classList.toggle('red-focus');
-
-
-      });
-      // Cambiarmos el boton a rojo tambien
-
-      document.querySelector(DOMclasshtml.entradaboton).classList.toggle('red');
-
-
-
-    },
-
     ///Con esto hacemos el DOM publico para que sea consultado por otros metodos.
     tomarDOM: function () {
       return DOMclasshtml;
@@ -380,13 +354,9 @@ var controladorApp = (function (contPresupuesto, contUI) {
       }
     });
 
-    document.querySelector(DOM.contenedor).addEventListener("click", controlBorrarItem);
-
-    document.querySelector(DOM.entradaTipo).addEventListener("change", controladorUI.cambiarTipo);
-
-
-
-
+    document
+      .querySelector(DOM.contenedor)
+      .addEventListener("click", controlBorrarItem);
   };
 
   var actualizacionPorcentajes = function () {

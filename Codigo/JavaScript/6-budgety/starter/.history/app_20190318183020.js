@@ -339,16 +339,14 @@ var controladorUI = (function () {
         DOMclasshtml.entradaDinero
 
       );
-      // Cambimos el color a rojo de los campos cuando cambiar el estado 
+
       nodeListForEach(campos, function (actual) {
 
         actual.classList.toggle('red-focus');
 
 
       });
-      // Cambiarmos el boton a rojo tambien
 
-      document.querySelector(DOMclasshtml.entradaboton).classList.toggle('red');
 
 
 

@@ -54,7 +54,7 @@ var controladorPresupuesto = (function () {
       income: 0,
       expenses: 0
     },
-    presupuesto: 0,
+    presup: 0,
     // Se pone -1 porque si no hay dATOS NO PUEDE EXISTIR PORCENTAJE, -1 HACE REFERENNCIA A QUE NO EXISTE
     porcentaje: -1
   };
@@ -105,7 +105,7 @@ var controladorPresupuesto = (function () {
       calcularTotal("expenses");
       calcularTotal("income");
       // Calculamos el presupuesto: ingresos - gastos
-      data.presupuesto = data.totales.income - data.totales.expenses;
+      data.presup = data.totales.income - data.totales.expenses;
       // Calculamos el porcentaje de ingresos que gastamos
       // Creamos la formula de porcentaje y redondeamos el valor con Math.round
 
@@ -166,40 +166,7 @@ var controladorUI = (function () {
     gastoEtiqueta: ".budget__expenses--value",
     porcentajeEtiqueta: ".budget__expenses--percentage",
     contenedor: ".container",
-    gastosPorcentajeEtiqueta: ".item__percentage",
-    fechaEtiqueta: ".budget__title--month"
-  };
-
-  var formatoNumero = function (num, type) {
-    var numSplit;
-    num = Math.abs(num);
-    // Pone dos decimales a los numeros y los redondea dejando dos decimales
-    num = num.toFixed(2);
-
-    numSplit = num.split('.');
-
-    int = numSplit[0];
-    if (int.length > 3) {
-      //comienza en la posicion cero y lee un caracter luego vamos a la posicion 1 y leemos 3 numeros 
-      int = int.substr(0, int.length - 3) + ',' + int.substr(int.length - 3, int.length); // si el numero es 2310  ,  resultado es 2,310
-
-    }
-
-    dec = numSplit[1];
-
-
-    return (type === "expenses" ? '-' : '+') + ' ' + int + '.' + dec;
-
-  };
-
-  var nodeListForEach = function (list, callback) {
-    for (var i = 0; i < list.length; i++) {
-      callback(list[i], i);
-
-
-
-    }
-
+    gastosPorcentajeEtiqueta: ".item__percentage"
   };
 
   return {
@@ -234,7 +201,7 @@ var controladorUI = (function () {
       // No me queda claro porque el primero es Html y los otros dos tiene que ser newhtml, si todos se colocan como newhtml da error.
       newhtml = html.replace("%id%", obj.id);
       newhtml = newhtml.replace("%descripcion%", obj.descripcion);
-      newhtml = newhtml.replace("%valor%", formatoNumero(obj.valor, type));
+      newhtml = newhtml.replace("%valor%", obj.valor);
 
       // Insertar el html en el DOM
       // esto hace que todo nuestra innfo se inserte en los contenedores de lista de ingresos y gastos.
@@ -263,18 +230,13 @@ var controladorUI = (function () {
       camposArr[0].focus();
     },
 
-
-
     mostrarPresupuesto: function (objeto) {
-
-      objeto.presupuesto > 0 ? type = "income" : type = "expense";
-
       document.querySelector(DOMclasshtml.presupuestoEtiqueta).textContent =
-        formatoNumero(objeto.presupuesto, type);
+        objeto.presupuesto;
       document.querySelector(DOMclasshtml.ingresoEtiqueta).textContent =
-        formatoNumero(objeto.totaling, "income");
+        objeto.totaling;
       document.querySelector(DOMclasshtml.gastoEtiqueta).textContent =
-        formatoNumero(objeto.totalgast, "expense");
+        objeto.totalgast;
 
       if (objeto.porcentajes > 0) {
         document.querySelector(DOMclasshtml.porcentajeEtiqueta).textContent =
@@ -288,7 +250,15 @@ var controladorUI = (function () {
 
       var campos = document.querySelectorAll(DOMclasshtml.gastosPorcentajeEtiqueta);
 
+      var nodeListForEach = function (list, callback) {
+        for (var i = 0; i < list.length; i++) {
+          callback(list[i], i);
 
+
+
+        }
+
+      };
 
       nodeListForEach(campos, function (actual, index) {
         //Do someting 
@@ -311,48 +281,7 @@ var controladorUI = (function () {
     },
 
 
-    mostrarFecha: function () {
-      var now, month, year;
 
-
-      now = new Date(); // Este metodo ya esta definnido en JS
-
-
-      meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
-
-
-
-      month = now.getMonth();
-      year = now.getFullYear(); // este metodo ya esta definido en Javascritp, por eso lo dejo en ingles
-      document.querySelector(DOMclasshtml.fechaEtiqueta).textContent = meses[month] + ' ' + year;
-
-
-
-    },
-
-    cambiarTipo: function () {
-
-      var campos = document.querySelectorAll(
-
-        DOMclasshtml.entradaTipo + ',' +
-        DOMclasshtml.entradaDescripcion + ',' +
-        DOMclasshtml.entradaDinero
-
-      );
-      // Cambimos el color a rojo de los campos cuando cambiar el estado 
-      nodeListForEach(campos, function (actual) {
-
-        actual.classList.toggle('red-focus');
-
-
-      });
-      // Cambiarmos el boton a rojo tambien
-
-      document.querySelector(DOMclasshtml.entradaboton).classList.toggle('red');
-
-
-
-    },
 
     ///Con esto hacemos el DOM publico para que sea consultado por otros metodos.
     tomarDOM: function () {
@@ -380,13 +309,9 @@ var controladorApp = (function (contPresupuesto, contUI) {
       }
     });
 
-    document.querySelector(DOM.contenedor).addEventListener("click", controlBorrarItem);
-
-    document.querySelector(DOM.entradaTipo).addEventListener("change", controladorUI.cambiarTipo);
-
-
-
-
+    document
+      .querySelector(DOM.contenedor)
+      .addEventListener("click", controlBorrarItem);
   };
 
   var actualizacionPorcentajes = function () {
@@ -480,7 +405,6 @@ var controladorApp = (function (contPresupuesto, contUI) {
     init: function () {
       console.log("La aplicación se inicio");
       //Pone el contador en cero
-      controladorUI.mostrarFecha();
       controladorUI.mostrarPresupuesto({
         presupuesto: 0,
         totaling: 0,

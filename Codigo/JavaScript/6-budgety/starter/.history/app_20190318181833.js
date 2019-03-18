@@ -330,25 +330,13 @@ var controladorUI = (function () {
 
     },
 
-    cambiarTipo: function () {
+    cambiodeTipo: function () {
 
       var campos = document.querySelectorAll(
 
         DOMclasshtml.entradaTipo + ',' +
         DOMclasshtml.entradaDescripcion + ',' +
-        DOMclasshtml.entradaDinero
-
-      );
-      // Cambimos el color a rojo de los campos cuando cambiar el estado 
-      nodeListForEach(campos, function (actual) {
-
-        actual.classList.toggle('red-focus');
-
-
-      });
-      // Cambiarmos el boton a rojo tambien
-
-      document.querySelector(DOMclasshtml.entradaboton).classList.toggle('red');
+        DOMclasshtml.entradaDinero);
 
 
 
@@ -382,7 +370,7 @@ var controladorApp = (function (contPresupuesto, contUI) {
 
     document.querySelector(DOM.contenedor).addEventListener("click", controlBorrarItem);
 
-    document.querySelector(DOM.entradaTipo).addEventListener("change", controladorUI.cambiarTipo);
+    document.querySelector(DOM.inputType).addEventListener("change", controladorUI.cambiodeTipo);
 
 
 
