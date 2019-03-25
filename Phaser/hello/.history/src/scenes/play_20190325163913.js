@@ -16,7 +16,7 @@ class Play extends Phaser.Scene {
         //Llamamos los objetos y los volvelos locales para poderlos usar en este javascript
         //Agregamos elementos al a escena Play
         this.snake = new Snake(this);
-        this.comida = new Comida(this);
+        this.comida = new Comida(thzis);
     }
     create() {
 
@@ -57,12 +57,7 @@ class Play extends Phaser.Scene {
             this.snake.changeMov("derecha");
 
         });
-        //Coliasion de cabeza con comida
-        this.physics.add.collider(this.snake.cuerpo[0], this.comida.comida, () => {
-            this.comida.crearComida();
 
-            this.snake.crece();
-        });
 
     }
 

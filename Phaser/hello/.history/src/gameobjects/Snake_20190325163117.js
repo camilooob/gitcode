@@ -17,13 +17,16 @@ class Snake {
             );
         }
         //Comienza en 1 porque la primera pieza ( cabeza) no nos interesa contarla 
-        for (let i = 1; i < 10; i++) {
+        for (let i = 1; i < 20; i++) {
             //Agregamos la colisiòn cuando choque con su cuerpo
             this.scene.physics.add.collider(this.cuerpo[0], this.cuerpo[i], () => this.choca());
 
         }
 
-
+        setInterval(() => {
+            this.crece();
+        }, 1000);
+        // 1000 milisegundos son 1 segundo 
 
 
 
@@ -97,7 +100,7 @@ class Snake {
                     break;
             }
             //Entre mas grande es el numero, mas lento va el cuerpo 
-            this.timer = time + 150;
+            this.timer = time + 200;
         }
 
     }

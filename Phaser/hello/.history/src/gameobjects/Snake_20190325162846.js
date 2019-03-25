@@ -7,7 +7,7 @@ class Snake {
         // Lo creamos para que no permita devolver la serpiente sobre si misma
         this.oldDir = "derecha";
         //Aqui definimos el tamaño de la serpiente
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < 10; i++) {
 
             //Comienza con tres y con el push va entrando en el array 
             this.cuerpo.push(
@@ -23,7 +23,10 @@ class Snake {
 
         }
 
-
+        serInterval(() => {
+            this.crece();
+        }, 1000);
+        // 1000 milisegundos son 1 segundo 
 
 
 
@@ -34,7 +37,6 @@ class Snake {
         const obj = this.cuerpo[this.cuerpo.length - 1];
         const newObj = this.scene.physics.add.image(obj.x, obj.y, "cuerpo").setOrigin(0);
         this.cuerpo.push(newObj);
-        this.scene.physics.add.collider(this.cuerpo[0], newObj, () => this.choca());
     }
     //Creamos la variable choca, que cuando se choque envie a la escena GameOver.
     choca() {
@@ -97,7 +99,7 @@ class Snake {
                     break;
             }
             //Entre mas grande es el numero, mas lento va el cuerpo 
-            this.timer = time + 150;
+            this.timer = time + 200;
         }
 
     }

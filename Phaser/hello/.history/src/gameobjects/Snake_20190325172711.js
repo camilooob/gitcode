@@ -25,8 +25,6 @@ class Snake {
 
 
 
-
-
         //Cambia de movimiento 
     }
     //Creamos la variable para que cresca la serpiente cuando come
@@ -97,7 +95,7 @@ class Snake {
                     break;
             }
             //Entre mas grande es el numero, mas lento va el cuerpo 
-            this.timer = time + 150;
+            this.timer = time + 200;
         }
 
     }

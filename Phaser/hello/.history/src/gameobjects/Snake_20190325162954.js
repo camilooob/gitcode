@@ -7,7 +7,7 @@ class Snake {
         // Lo creamos para que no permita devolver la serpiente sobre si misma
         this.oldDir = "derecha";
         //Aqui definimos el tamaño de la serpiente
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < 10; i++) {
 
             //Comienza con tres y con el push va entrando en el array 
             this.cuerpo.push(
@@ -23,7 +23,10 @@ class Snake {
 
         }
 
-
+        serInterval(() => {
+            this.crece();
+        }, 1000);
+        // 1000 milisegundos son 1 segundo 
 
 
 
@@ -97,7 +100,7 @@ class Snake {
                     break;
             }
             //Entre mas grande es el numero, mas lento va el cuerpo 
-            this.timer = time + 150;
+            this.timer = time + 200;
         }
 
     }

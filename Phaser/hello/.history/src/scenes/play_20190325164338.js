@@ -57,12 +57,7 @@ class Play extends Phaser.Scene {
             this.snake.changeMov("derecha");
 
         });
-        //Coliasion de cabeza con comida
-        this.physics.add.collider(this.snake.cuerpo[0], this.comida.comida, () => {
-            this.comida.crearComida();
 
-            this.snake.crece();
-        });
 
     }
 

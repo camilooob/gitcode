@@ -62,7 +62,7 @@ class Snake {
 
     update(time) {
 
-        if (time > this.timer) {
+        if (time > this.timmer) {
             // con el for pegamos el cuerpo a la cabeza jeje
             for (let i = this.cuerpo.length - 1; i > 0; i--) {
                 this.cuerpo[i].x = this.cuerpo[i - 1].x;
