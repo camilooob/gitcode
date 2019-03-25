@@ -4,10 +4,8 @@ class Snake {
         this.cuerpo = [];
         this.dir = "izquierda";
         this.timer = 0;
-        // Lo creamos para que no permita devolver la serpiente sobre si misma
         this.oldDir = "derecha";
-        //Aqui definimos el tamaño de la serpiente
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 3; i++) {
 
             //Comienza con tres y con el push va entrando en el array 
             this.cuerpo.push(
@@ -26,8 +24,6 @@ class Snake {
         //Cambia de movimiento 
     }
     changeMov(dir) {
-
-        // si es la direccion direfente aplicar. esto no permite devovlerse sobre si misma a la serpiente 
         if (this.oldDir != dir) {
             this.dir = dir;
 

@@ -33,27 +33,6 @@ class Play extends Phaser.Scene {
             this.snake.changeMov("abajo");
 
         });
-        this.input.keyboard.on("keydown_W", () => {
-            console.log("Abajo")
-            this.snake.changeMov("arriba");
-
-        });
-        this.input.keyboard.on("keydown_S", () => {
-            console.log("Abajo")
-            this.snake.changeMov("abajo");
-
-        });
-        this.input.keyboard.on("keydown_A", () => {
-            console.log("Abajo")
-            this.snake.changeMov("izquierda");
-
-        });
-        this.input.keyboard.on("keydown_D", () => {
-            console.log("Abajo")
-            this.snake.changeMov("derecha");
-
-        });
-
 
     }
 
