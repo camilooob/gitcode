@@ -1,7 +1,7 @@
 /*****************************
 * Variables and data types
 */
-/*
+
 var firstName = 'John';
 console.log(firstName);
 
@@ -625,7 +625,6 @@ for (var i = 0; i < john.length; i++) {
 for (var i = john.length - 1; i >= 0; i--) {
     console.log(john[i]);
 }
-*/
 
 
 
@@ -633,7 +632,7 @@ for (var i = john.length - 1; i >= 0; i--) {
 * CODING CHALLENGE 5
 */
 
-/*
+
 Remember the tip calculator challenge? Let's create a more advanced version using everything we learned!
 
 This time, John and his family went to 5 different restaurants. The bills were $124, $48, $268, $180 and $42.
@@ -657,7 +656,7 @@ Mark likes to tip 20% of the bill when the bill is less than $100, 10% when the 
 GOOD LUCK 😀
 */
 
-/*
+
 var john = {
     fullName: 'John Smith',
     bills: [124, 48, 268, 180, 42],
@@ -733,4 +732,4 @@ if (john.average > mark.average) {
 } else if (mark.average > john.average) {
     console.log(mark.fullName + '\'s family pays higher tips, with an average of $' + mark.average);
 }
-*/
+
