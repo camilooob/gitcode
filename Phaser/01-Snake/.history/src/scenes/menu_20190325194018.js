@@ -27,21 +27,6 @@ class Menu extends Phaser.Scene {
             yoyo: true,
             repeat: -1
         });
-        this.input.keyboard.on("keydown_ENTER", () => {
-            console.log("enter")
-            this.scene.start("Play");
-
-        });
-        this.input.keyboard.on("keydown_SPACE", () => {
-            console.log("Space")
-            this.scene.start("Play");
-        });
-
-        this.input.on("pointerdown", () => {
-            this.scene.start("Play");
-
-        });
-
     }
 
 

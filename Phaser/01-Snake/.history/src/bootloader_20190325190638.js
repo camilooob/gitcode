@@ -26,7 +26,7 @@ class Bootloader extends Phaser.Scene {
         //Agregamos la fuente con nombre de fuente pixel
         this.cache.bitmapFont.add("pixel", Phaser.GameObjects.RetroFont.Parse(this, fontJSON))
         //Iniciamos el juego con la escena Play
-        this.scene.start("Menu");
+        this.scene.start("Gameover");
 
     }
 

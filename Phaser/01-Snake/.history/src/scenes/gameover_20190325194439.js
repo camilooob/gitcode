@@ -40,10 +40,7 @@ class Gameover extends Phaser.Scene {
             this.salirscene();
 
         });
-        this.input.keyboard.on("keydown_ENTER", () => {
-            this.salirscene();
-        });
-        this.input.keyboard.on("keydown_SPACE", () => {
+        this.input.on("keydown:_ENTER", () => {
             this.salirscene();
         })
 

@@ -33,7 +33,7 @@ class Menu extends Phaser.Scene {
 
         });
         this.input.keyboard.on("keydown_SPACE", () => {
-            console.log("Space")
+            console.log("SPACE")
             this.scene.start("Play");
         });
 

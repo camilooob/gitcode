@@ -20,13 +20,7 @@ class Play extends Phaser.Scene {
     }
     create() {
         //Escribimos texto: ubicacion x, y , nombre fuente , texto agregado, tamaño letra
-        // this.add.dynamicBitmapText(10, 10, "pixel", "PUNTOS", 8);
-        // Mejor llamamos la escena UI conn lauch la ejecuta al mismo tiempo con la escena play
-        this.scene.launch("UI");
-        //Agregamos todas las propiedades y metodos de la  escena UI para poder usar addpoint (sumar puntos)
-        const sceneUI = this.scene.get("UI");
-
-
+        this.add.dynamicBitmapText(10, 10, "pixel", "PUNTOS", 8);
 
         this.input.keyboard.on("keydown_RIGHT", () => {
             console.log("Derecha");
@@ -68,8 +62,8 @@ class Play extends Phaser.Scene {
         //Coliasion de cabeza con comida
         this.physics.add.collider(this.snake.cuerpo[0], this.comida.comida, () => {
             this.comida.crearComida();
+
             this.snake.crece();
-            sceneUI.addPoint();
         });
 
     }

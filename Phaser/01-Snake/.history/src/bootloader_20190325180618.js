@@ -14,19 +14,14 @@ class Bootloader extends Phaser.Scene {
         this.load.image("comida", "./assets/food.png")
         this.load.image("tablero", "./assets/tablero.png")
         // Llamamos a la Escena Play
-        // Importamos la fuente (el json de la fuentne y la imagen )
+
         this.load.json("fontJSON", "../assets/font/font.json");
         this.load.image("font", "../assets/font/font.png");
 
 
     }
     create() {
-        // Cargamos la fuente
-        const fontJSON = this.cache.json.get("fontJSON");
-        //Agregamos la fuente con nombre de fuente pixel
-        this.cache.bitmapFont.add("pixel", Phaser.GameObjects.RetroFont.Parse(this, fontJSON))
-        //Iniciamos el juego con la escena Play
-        this.scene.start("Menu");
+        this.scene.start("Play");
 
     }
 
