@@ -224,7 +224,7 @@ header {
     background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(img/hero-min.jpg);
     background-size: cover;
     background-position: center;
-    height: 100vh;
+    height: 22vh;
     background-attachment: fixed;
 }
 
@@ -421,7 +421,7 @@ header {
 }
 
 .app-screen {
-    width: 100%;
+    width: 40%;
 }
 
 .works-step {
@@ -459,22 +459,6 @@ header {
 
 
 /* ----------------------------------------------- */
-
-
-/* CITIES */
-
-
-/* ----------------------------------------------- */
-
-.box img {
-    width: 100%;
-    height: auto;
-    margin-bottom: 15px;
-}
-
-.city-feature {
-    margin-bottom: 5px;
-}
 
 
 /* ----------------------------------------------- */
