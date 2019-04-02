@@ -63,8 +63,17 @@ for (const cur of boxesArray)
 */
 // Spred Operator 
 // e usa para unir arrays ejemplo
-
+/*
 const familiaGomez = ["Camilo", " Daniel", "Nubia"];
 const familiaBaquero = ["Diego", "Sofia", "Astrid"];
 const bigFamily = [...familiaGomez, ...familiaBaquero];
 console.log(bigFamily);
+*/
+//Rest Parameters - Convert a function data in array 
+
+//ES6
+function esMayorDeEdad(...years) {
+    // Funcion que pasa por el array
+    years.forEach(num => console.log((2019 - num) >= 18));
+}
+esMayorDeEdad(1990, 2015, 1965);
