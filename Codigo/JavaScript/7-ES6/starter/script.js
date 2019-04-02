@@ -40,7 +40,8 @@ console.log(n.endsWith("od"));
 console.log(n.includes("gf"));
 console.log(`${primerNombre} `.repeat(5));
 */
-//Arrays
+//Arrow
+/*
 const years = [1990, 1965, 1982, 1937];
 // Asi se declaran las funciones ya no toca usar function return 
 let edad = years.map(num => 2016 -
@@ -49,3 +50,21 @@ console.log(edad);
 
 edad = years.map((num, index) => `Edad elemento ${index +1}: ${2019 - num}. `);
 console.log(edad);
+*/
+// Cambiamos el color de las cajas a gris. 
+/*
+const boxesArray = Array.from(boxes);
+const boxes = document.querySelectorAll(".box");
+Array.from(boxes).forEach(caja => caja.style.backgroundColor = "dodgerblue");
+
+//
+for (const cur of boxesArray)
+
+*/
+// Spred Operator 
+// e usa para unir arrays ejemplo
+
+const familiaGomez = ["Camilo", " Daniel", "Nubia"];
+const familiaBaquero = ["Diego", "Sofia", "Astrid"];
+const bigFamily = [...familiaGomez, ...familiaBaquero];
+console.log(bigFamily);
