@@ -42,8 +42,27 @@ class Global {
 }
 //Luego creamos una clase extends para el parque
 class Parque extends Global {
-    constructor(name, yearBuild, area, arboles);
-    super(area, arboles);
-    this.area = area;
-    this.global =
+    constructor(name, yearBuild, area, arboles) {
+
+
+        //Nuevas variables 
+        super(area, arboles);
+        this.area = area;
+        this.arboles = arboles;
+
+    }
+    densidadxArboles() {
+        const density = this.arboles / this.area;
+        console.log(`${this.name} tiene una densidad de arboles de ${density} por kilometro cuadrado`);
+
+
+
+
+    }
+
+
+
+
+
+
 }
