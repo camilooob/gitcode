@@ -17,9 +17,33 @@ At an end-of-year meeting, you boss wants a final report with the following:
 3. The name of the park that has mor than 1000 trees.
 4. Total and average length of the town's streets
 5. Size classification of all streets:
-tiny/ small / normal /big / huge 
+tiny/ small / normal /big / huge (Default Parameters)
 If the size is unknown, the default is normal.
 
 All the report data should be printed to the console.
 
-HINT: Use some of the ES6 features: classes, subclasses, template strings, default parameters, maps, arrow functions, destructuring, etc.
+HINT: Use some of the ES6 features:
+ classes, subclasses, 
+ template strings,
+  default parameters,
+   maps, 
+   arrow functions,
+    destructuring, etc.
+*/
+
+//Creamos una clase Global porque es lo que tenemos en comun entre las dos actividades. 
+
+class Global {
+    constructor(name, yearBuild) {
+        this.name = name;
+        this.yearBuild = yearBuild;
+
+    }
+}
+//Luego creamos una clase extends para el parque
+class Parque extends Global {
+    constructor(name, yearBuild, area, arboles);
+    super(area, arboles);
+    this.area = area;
+    this.global =
+}
