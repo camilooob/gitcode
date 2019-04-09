@@ -52,7 +52,7 @@ class ParquesdelPueblo extends Principal {
         // solo formula math 
     densidadmath() {
         const densi = this.arboles / this.area;
-        console.log(`El parque ${this.name} tiene una densidad de arboles de ${densi}`);
+        console.log(`El parque ${this.nombre} tiene una densidad de arboles de ${densi}`);
 
     }
 }
@@ -66,7 +66,7 @@ class CallesdelPueblo extends Principal {
         }
         // solo formula math
     clasificaciontamaño() {
-        const clasificador = Map()
+        const clasificador = new Map()
         clasificador.set = (1, "pequeño");
         clasificador.set = (2, "mediano");
         clasificador.set = (3, "normal");
@@ -80,7 +80,19 @@ class CallesdelPueblo extends Principal {
 
 
 const listaParques = [new ParquesdelPueblo("Parque Simon Bolivar", 2000, 10, 200), new ParquesdelPueblo("Los Nogales", 1900, 30, 280), new ParquesdelPueblo("Los Cerezos", 1993, 20, 270), new ParquesdelPueblo("Parque Tesla", 1890, 100, 2500)];
-const listaCalles = [new CallesdelPueblo("Calle UN", 1900, 150, 4), new CallesdelPueblo("Calle Torres", 1754, 172, 1), new CallesdelPueblo("Parque Bogota", 1980, 180, 5), new CallesdelPueblo("Calle Av Suba", 1970, 140, 4)];
+const listaCalles = [new CallesdelPueblo("Calle UN", 1900, 150, 1), new CallesdelPueblo("Calle Torres", 1754, 172, 2), new CallesdelPueblo("Parque Bogota", 1980, 180, 5), new CallesdelPueblo("Calle Av Suba", 1970, 140, 4)];
+
+
+function calculadora(array){
+
+
+const suma = array.reduce((previo, actual, index) => previo + actual, 0)
+
+return[suma, suma/array.length]; 
+
+}
+
+
 
 
 
@@ -89,17 +101,32 @@ const listaCalles = [new CallesdelPueblo("Calle UN", 1900, 150, 4), new Callesde
 function reporteParques(p) {
 
     console.log("---Reporte de Parques ------");
-
-
-
+// PAra cada arbol calculamos la densidad 
+p.forEach(element => {
+    element.densidadmath()
+});
+// Calcular AÑos 
+const años = p.map(element => new Date().getFullYear() -element.añodeconstruccion);
+// Calculamos edad Promedio 
+const [edadtotal, promedioedad] = calculadora(años);
+//calcular cuales parque tienen mas de 100 años
+const i = p.map(element=> element.arboles).findIndex(element => element >=1000);
+console.log(`${p[i].nombre} tiene mas de 1000 arboles.`)
 
 
 }
 
 function reporteCalles(c) {
 
+    console.log("---Reporte de Calles ------");
+const [totallargo, promediocalles] = calculadora(c.map(element => element.length));
+console.log(`Nuestras ${c.length} calle tienen un largo total de ${totallargo} con un promedio de ${promediocalles} kilometros`);
 
 
+
+//Clasificación Calles 
+
+c.forEach(element => element.clasificaciontamaño());
 
 
 
@@ -107,5 +134,5 @@ function reporteCalles(c) {
 
 
 
-reportCalles(listaCalles);
-reportParques(listaParques);
+reporteCalles(listaCalles);
+reporteParques(listaParques);
