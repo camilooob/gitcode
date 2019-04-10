@@ -1,0 +1,17 @@
+{
+  "name": "forkity",
+  "version": "1.0.0",
+  "description": "homework udemy",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Cabadev",
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "^3.3.1"
+  },
+  "devDependencies": {
+    "webpack": "^4.29.6"
+  }
+}
