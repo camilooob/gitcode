@@ -9,9 +9,14 @@
   "author": "Cabadev",
   "license": "ISC",
   "dependencies": {
+    "@babel/polyfill": "^7.4.3",
     "jquery": "^3.3.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "babel": "^6.23.0",
+    "babel-loader": "^8.0.5",
     "webpack": "^4.29.6"
   }
 }
