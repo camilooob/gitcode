@@ -654,10 +654,10 @@ nav.mail-button {
     text-align: center;
     background-color: #fff;
     border-radius: 5px;
-    height: 60px;
-    padding-top: 15px;
-    font-size: 21px;
-    color: #000;
+    height: 85px;
+    padding-top: 20px;
+    font-size: 30px;
+    color: #4ced69;
     display: inline-block
 }
 
