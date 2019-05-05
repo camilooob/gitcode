@@ -1,0 +1,11 @@
+#include <stdio.h>
+int main()
+{
+    int num1;
+    int num2;
+    int resultado;
+    printf("ingrese el primer valor\n");
+    scanf("%d", &num1);
+    printf("ingrese el segundo valor\n");
+    scanf("%d", &num2);
+}
