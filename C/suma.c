@@ -5,6 +5,8 @@ int main()
     int a = 10;
     int b = 20;
     printf("ingrese el primer valor\n");
+    /*leemos el valor que el usuario ingresa y lo almacenamos con scanf*/
+    /*scanf tiene dos argumentos: tipo de dato "%d" entero decimal, y la ruta o variable donde se guardara*/
     scanf("%d", &num1);
     printf("ingrese el segundo valor\n");
     scanf("%d", &num2);
@@ -14,3 +16,5 @@ int main()
 }
 /*Operadores Logicos*/
 /*Problema de git solucionado con tokens*/
+
+/* En C tenemos operadores  == igual =! diferente <  > >= <=  mayor o igual 
