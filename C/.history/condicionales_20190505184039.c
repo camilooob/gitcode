@@ -12,12 +12,6 @@ int main()
     {
         printf("Es mayor de edad\n");
     }
-    /*pregunta de nuevo*/
-    else if (edad == 17)
-    {
-        printf("Sorry, casi eres mayor de edad\n");
-    }
-    /* si no entonces */
     else
     {
         printf("No es mayor de edad\n");
