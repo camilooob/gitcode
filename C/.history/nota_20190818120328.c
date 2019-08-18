@@ -18,22 +18,22 @@ int main()
     switch (nota)
     {
     case 'A':
-        printf("Excelente ");
+        printf("Excelente");
         break;
     case 'B':
-        printf("Notable ");
+        printf("Notable");
         break;
     case 'C':
-        printf("Aprobado ");
+        printf("Aprobado");
         break;
     case 'D':
-    printf("Reprobado ");
+    printf("Reprobado");
     break;
     case 'F':
-    printf("Reprobado ");
+    printf("Reprobado");
     break;
     default:
-    printf("Error, ingrese una nota valida ");
+    printf("Error, ingrese una nota valida");
 
         break;
     }
