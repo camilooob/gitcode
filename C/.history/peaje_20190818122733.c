@@ -16,33 +16,32 @@ int main()
      Si no aplica = Vehículo no autorizado */
 
     int peaje;
-    char selector;
     printf("\nBienvenido a la calculadora de Peaje");
     printf("\n------------------------------------");
     printf("\n------------------------------------");
     printf("\nIngrese el numeral del tipo de Vehiculo: \n");
-    scanf("%c", &selector);
+    scanf("%i", &peaje);
 
-    switch (selector)
+    switch (peaje)
     {
     case '1':
         peaje = TURISMO;
         printf("Vehiculo Turismo \n");
-        printf("El valor a pagar es $%i ", peaje);
+        printf("El valor a pagar es $ %i", peaje);
 
         break;
     case '2':
         peaje = AUTOBUS;
         printf("Vehiculo Autobus \n");
-        printf("El valor a pagar es $%i ", peaje);
+        printf("El valor a pagar es $ %i", peaje);
         break;
     case '3':
         peaje = MOTO;
         printf("Vehiculo Moto \n");
-        printf("El valor a pagar es $%i ", peaje);
+        printf("El valor a pagar es $ %i", peaje);
         break;
     default:
-        printf("Vehiculo no autorizado ");
+        printf("Vehiculo no autorizado");
         break;
     }
 
