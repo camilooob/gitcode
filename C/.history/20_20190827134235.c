@@ -49,19 +49,7 @@ printf("%i x 6 = %i \n",numero,t6);
 printf("%i x 7 = %i \n",numero,t7);
 printf("%i x 8 = %i \n",numero,t8);
 printf("%i x 9 = %i \n",numero,t9);
-printf("%i x 10 = %i \n",numero,t11);
-printf("%i x 11 = %i \n",numero,t12);
-printf("%i x 13 = %i \n",numero,t13);
-printf("%i x 14 = %i \n",numero,t14);
-printf("%i x 15 = %i \n",numero,t15);
-printf("%i x 16 = %i \n",numero,t16);
-printf("%i x 17 = %i \n",numero,t17);
-printf("%i x 18 = %i \n",numero,t18);
-printf("%i x 19 = %i \n",numero,t19);
-printf("%i x 20 = %i \n",numero,t20);
-
-
-
+printf("%i x 10 = %i \n",numero,t10);
 
 
 
