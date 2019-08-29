@@ -39,5 +39,7 @@ void funcion_aleatorea()
 
         printf("PARES: %i \n", par[i]);
         printf("IMPARES: %i \n", impar[i]);
+        // Prueba cambios desde Ipad
     }
 }
+
