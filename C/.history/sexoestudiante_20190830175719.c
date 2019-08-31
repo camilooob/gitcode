@@ -26,7 +26,7 @@ int main()
             ;
 
         printf("\nDigite el sexo del estudiante No. %i: \n", i);
-        scanf("%s", estudiantes);
+        gets(estudiantes);
         //Codigo;
 
         if (strcmp(estudiantes, "m") == 0)

@@ -24,20 +24,21 @@ int main()
         //Linux - Mac limpiador
         while ((getchar()) != '\n')
             ;
-
-        printf("\nDigite el sexo del estudiante No. %i: \n", i);
-        scanf("%s", estudiantes);
+        //Windows limpiador
+        fflush(stdin);
+        printf("Digite el sexo del estudiante No. %i: \n", i);
+        fgets(estudiantes, i, stdin);
         //Codigo;
 
         if (strcmp(estudiantes, "m") == 0)
         {
             chicos++;
-            printf("Agregado Correctamente a Chicos");
+            printf("Agregado Correctamente a Chicos\n");
         }
         else if (strcmp(estudiantes, "f") == 0)
         {
             chicas++;
-            printf("Agregada Correctamente a Chicas");
+            printf("Agregada Correctamente a Chicas\n");
         }
     }
     printf("El total de Chicos es %i \n", chicos);

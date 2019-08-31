@@ -18,6 +18,7 @@ int main()
     printf("Digite el numero de estudiantes: \n");
     scanf("%i", &numeroestudiantes);
 
+   
     // for(inicializacion; condicion; incremento)
     for (i = 1; i <= numeroestudiantes; i++)
     {
@@ -26,7 +27,7 @@ int main()
             ;
 
         printf("\nDigite el sexo del estudiante No. %i: \n", i);
-        scanf("%s", estudiantes);
+        fgets(estudiantes, 100, stdin);
         //Codigo;
 
         if (strcmp(estudiantes, "m") == 0)

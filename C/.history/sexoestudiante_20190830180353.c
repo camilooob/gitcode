@@ -12,11 +12,13 @@ se encuentran en el grupo, suponiendo que los datos son extraidos alumno por alu
 
 int main()
 {
-    int i = 0, chicos = 0, chicas = 0, numeroestudiantes = 0;
+    int i = 0, chicos = 0, chicas = 0, numeroestudiantes = 0, tamano = 0;
     char estudiantes[numeroestudiantes];
 
     printf("Digite el numero de estudiantes: \n");
     scanf("%i", &numeroestudiantes);
+
+    tamano = numeroestudiantes + 1;
 
     // for(inicializacion; condicion; incremento)
     for (i = 1; i <= numeroestudiantes; i++)
@@ -26,7 +28,7 @@ int main()
             ;
 
         printf("\nDigite el sexo del estudiante No. %i: \n", i);
-        scanf("%s", estudiantes);
+        fgets(estudiantes, tamano, stdin);
         //Codigo;
 
         if (strcmp(estudiantes, "m") == 0)

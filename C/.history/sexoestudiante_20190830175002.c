@@ -13,31 +13,32 @@ se encuentran en el grupo, suponiendo que los datos son extraidos alumno por alu
 int main()
 {
     int i = 0, chicos = 0, chicas = 0, numeroestudiantes = 0;
-    char estudiantes[numeroestudiantes];
+    char estudiantes[10];
 
     printf("Digite el numero de estudiantes: \n");
     scanf("%i", &numeroestudiantes);
 
     // for(inicializacion; condicion; incremento)
-    for (i = 1; i <= numeroestudiantes; i++)
+    for (i = 1; i < numeroestudiantes; i++)
     {
         //Linux - Mac limpiador
         while ((getchar()) != '\n')
             ;
-
-        printf("\nDigite el sexo del estudiante No. %i: \n", i);
-        scanf("%s", estudiantes);
+        //Windows limpiador
+        fflush(stdin);
+        printf("Digite el sexo del estudiante No. %i: \n", i);
+        fgets(estudiantes, numeroestudiantes, stdin);
         //Codigo;
 
         if (strcmp(estudiantes, "m") == 0)
         {
             chicos++;
-            printf("Agregado Correctamente a Chicos");
+            printf("Agregado Correctamente a Chicos\n");
         }
         else if (strcmp(estudiantes, "f") == 0)
         {
             chicas++;
-            printf("Agregada Correctamente a Chicas");
+            printf("Agregada Correctamente a Chicas\n");
         }
     }
     printf("El total de Chicos es %i \n", chicos);
