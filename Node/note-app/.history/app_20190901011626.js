@@ -1,4 +1,4 @@
-const getNotes = require('./notes.js')
+const getNotes = requre('./notes.js')
 
 
 const mensaje = getNotes()
