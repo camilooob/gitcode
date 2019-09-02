@@ -6,4 +6,3 @@ const mensaje = getNotes();
 
 const email = validator.isEmail("camilobaq@hotmail.com");
 console.log(mensaje);
-console.log(email);
