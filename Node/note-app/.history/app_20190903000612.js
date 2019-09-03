@@ -53,5 +53,4 @@ yargs.command({
     }
 });
 
-//console.log(yargs.argv);
-yargs.parse(); // solo aparece el comando de yargs
+console.log(yargs.argv);
