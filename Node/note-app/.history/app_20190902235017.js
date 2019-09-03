@@ -10,22 +10,18 @@ yargs.command({
     command: "agregar",
     describe: "Agregar nota",
     builder: {
-        titulo: {
-            describe: "Titulo de la nota",
-            //hace que sea obligatorio
+        title: {
+            describe: 'Titulo de la nota',
+            //hace que sea obligatorio 
             demandOption: true,
-            type: "string"
-        },
-        cuerpo: {
-            describe: "Agrega el cuerpo de la nota",
-            //hace que sea obligatorio
-            demandOption: true,
-            type: "string"
+            type: 'string'
+
         }
-    },
+
+
+    };
     handler: function(argv) {
-        console.log("Titulo: " + argv.titulo);
-        console.log("Cuerpo: " + argv.cuerpo);
+        console.log("Agregando Nota", argv);
     }
 });
 // Creando comando para quitar nota

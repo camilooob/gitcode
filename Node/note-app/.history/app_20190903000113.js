@@ -15,7 +15,7 @@ yargs.command({
             //hace que sea obligatorio
             demandOption: true,
             type: "string"
-        },
+        }
         cuerpo: {
             describe: "Agrega el cuerpo de la nota",
             //hace que sea obligatorio
