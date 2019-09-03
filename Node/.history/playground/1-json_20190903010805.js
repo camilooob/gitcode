@@ -17,3 +17,7 @@ const fs = require("fs");
 //fs.writeFileSync("1-json.json", bookjson);
 
 // Consultamos la infor de Json
+
+const dataBuffer = fs.readFileSync("1-json.json");
+const dataJSON = dataBuffer.toString();
+const data = JSON.parse(dataJSON);
