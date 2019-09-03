@@ -26,7 +26,7 @@ yargs.command({
     command: "lista",
     describe: "Muestra lista de Notas",
     handler: function() {
-        console.log("Lista de Notas");
+        console.log("Agregando Nota");
     }
 });
 // Creando comando para leer nota
@@ -34,7 +34,7 @@ yargs.command({
     command: "leer",
     describe: "Abre la nota",
     handler: function() {
-        console.log("Abriendo Nota");
+        console.log("Quitando nota");
     }
 });
 

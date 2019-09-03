@@ -21,21 +21,6 @@ yargs.command({
         console.log("Quitando nota");
     }
 });
-// Creando comando para lista nota
-yargs.command({
-    command: "lista",
-    describe: "Muestra lista de Notas",
-    handler: function() {
-        console.log("Lista de Notas");
-    }
-});
-// Creando comando para leer nota
-yargs.command({
-    command: "leer",
-    describe: "Abre la nota",
-    handler: function() {
-        console.log("Abriendo Nota");
-    }
-});
+// add , remove , read , list
 
 console.log(yargs.argv);
