@@ -26,11 +26,11 @@ const fs = require("fs");
 // MODIFICAR JSON  LEERLO EDITARLO Y GUARDARLO
 const dataBuffer = fs.readFileSync("1-json.json");
 const dataJSON = dataBuffer.toString();
-const nuevo = JSON.parse(dataJSON);
+const data = JSON.parse(dataJSON);
 
-nuevo.titulo = "Las aventuras de Cailo";
+data.titulo = "Las aventuras de Cailo";
 
 // Guardamos el Json con la modificacion
 
-const nuevoJSON = JSON.stringify(nuevo);
-fs.writeFileSync("1-json.json", nuevoJSON);
+const dataJSON = JSON.stringify(data);
+fs.writeFileSync("1-json.json", dataJSON);
