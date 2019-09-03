@@ -1,5 +1,5 @@
 // generador de json
-const fs = require("fs");
+
 //const book = {
 //    titulo: "Ego es el enemigo",
 //    autor: "Camilo Baquero"
@@ -17,8 +17,3 @@ const fs = require("fs");
 //fs.writeFileSync("1-json.json", bookjson);
 
 // Consultamos la infor de Json
-
-const dataBuffer = fs.readFileSync("1-json.json");
-const dataJSON = dataBufffer.toString();
-const data = JSON.parse(dataJSON);
-console.log(data.titulo);

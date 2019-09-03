@@ -21,4 +21,3 @@ const fs = require("fs");
 const dataBuffer = fs.readFileSync("1-json.json");
 const dataJSON = dataBufffer.toString();
 const data = JSON.parse(dataJSON);
-console.log(data.titulo);
