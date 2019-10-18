@@ -12,5 +12,4 @@ int main(void)
 		else if (c == ' ')
 			++nb;
 	printf("%d\n, %d\n , %d\n", nl, nb, nt);
-	return (0);
 }
