@@ -42,7 +42,7 @@ void printPuzzle(int **puzzle)
 		for (j = 0; j < 9; j++)
 		{
 			printf(" %d ", puzzle[i][j]);
-			if (((j + 1) % 3) == 0)
+			if (((j + 1) % 3) == 0 && j == 0)
 			{
 				printf("|");
 			}
