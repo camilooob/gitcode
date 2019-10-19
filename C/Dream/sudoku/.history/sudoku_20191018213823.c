@@ -1,6 +1,6 @@
 #include "sudoku.h"
 int main(void)
 {
-	int **createPuzzle();
+	createPuzzle();
 	return (0);
 }
