@@ -18,15 +18,5 @@ int **createPuzzle()
 					   0, 0, 0, 1, 0, 0, 8, 6, 0};
 	//Allocate Memory // No podemos retornar el Array sin Asignar la memoria previamente
 	puzzle = malloc(9 * sizeof(int *));
-
-	for (i = 0; i < 9; i++)
-	{
-		puzzle[i] = malloc(9 * sizeof(int *));
-
-		for (j = 0; j < 9; j++)
-		{
-			puzzle[i][j] = array[i][j];
-				}
-	}
 	return (array);
 }
