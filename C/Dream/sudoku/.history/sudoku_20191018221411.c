@@ -1,7 +1,7 @@
 #include "sudoku.h"
 int main(void)
 {
-	int **puzzle;
+	int **puzzle();
 
 	puzzle = createPuzzle();
 
