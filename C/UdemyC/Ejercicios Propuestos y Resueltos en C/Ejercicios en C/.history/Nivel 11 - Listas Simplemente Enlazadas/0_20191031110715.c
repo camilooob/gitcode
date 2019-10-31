@@ -40,7 +40,7 @@ nodo *primerNodo = malloc(sizeof(nodo));
 primerNodo -> dato = 5;
 
 nodo *segundoNodo = malloc(sizeof(nodo));
-segundoNodo -> dato = 7;
+primerNodo -> dato = 7;
 
                                   // llamo a la funcion agregar para incluirlos en la lista 
 agregar(primerNodo);

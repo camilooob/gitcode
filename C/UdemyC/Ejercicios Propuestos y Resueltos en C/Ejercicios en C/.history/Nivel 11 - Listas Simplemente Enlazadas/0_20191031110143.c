@@ -2,10 +2,10 @@
 #include <stdio.h>             // Libreria Standar 
 #include <stdlib.h>            //con esta libreria podemos usar NULL 
 
-typedef struct list
+typedef struct
 {
 	int dato;                 //tipo de dato que manejare y el nombre 
-	struct list *ste;   // Estructura anidada donde el puntero apunta al siguente posicion de la lista
+	struct nodo *ste;   // Estructura anidada donde el puntero apunta al siguente posicion de la lista
 }nodo;                        // Nodo sera el nombre de la estructura
 
                                //Le creamos dos variables primero y ultimo al nodo y las iniciamos en Null para evitar basura 
@@ -40,7 +40,7 @@ nodo *primerNodo = malloc(sizeof(nodo));
 primerNodo -> dato = 5;
 
 nodo *segundoNodo = malloc(sizeof(nodo));
-segundoNodo -> dato = 7;
+primerNodo -> dato = 7;
 
                                   // llamo a la funcion agregar para incluirlos en la lista 
 agregar(primerNodo);
@@ -52,7 +52,7 @@ nodo *i = primerNodo;
 while (i != NULL)
 {
 	printf("%i\n",i -> dato);
-	i = i -> ste;
+	i = i-> ste;
 }
 return (0);
 }
