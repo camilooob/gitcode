@@ -53,7 +53,7 @@ nodo *i = primerNodo;
 while (i != NULL)
 {
 	printf("%i\n",i -> dato);
-	i = i -> siguiente;
+	i = i-> siguiente;
 }
 
 

@@ -25,9 +25,10 @@ if (primero == NULL)
 	ultimo = position;
 }
 else                            //En caso de que la lista ya tenga datos
-{                               //ultimo ya esta ocupado asi que muevase a la siguente posision
+{
+                                //ultimo ya esta ocupado asi que muevase a la siguente posision
 ultimo -> siguiente = position;
-ultimo = position;
+ultimo = nodo;
 }
 }
 
@@ -53,10 +54,10 @@ nodo *i = primerNodo;
 while (i != NULL)
 {
 	printf("%i\n",i -> dato);
-	i = i -> siguiente;
+	i = i-> siguiente;
 }
 
 
-return (0);
+return (0)
 
 }

@@ -2,7 +2,7 @@
 #include <stdio.h>             // Libreria Standar 
 #include <stdlib.h>            //con esta libreria podemos usar NULL 
 
-typedef struct
+typedef struct 0
 {
 	int dato;                 //tipo de dato que manejare y el nombre 
 	struct nodo *siguiente;   // Estructura anidada donde el puntero apunta al siguente posicion de la lista
@@ -25,9 +25,10 @@ if (primero == NULL)
 	ultimo = position;
 }
 else                            //En caso de que la lista ya tenga datos
-{                               //ultimo ya esta ocupado asi que muevase a la siguente posision
+{
+                                //ultimo ya esta ocupado asi que muevase a la siguente posision
 ultimo -> siguiente = position;
-ultimo = position;
+ultimo = nodo;
 }
 }
 
@@ -53,10 +54,10 @@ nodo *i = primerNodo;
 while (i != NULL)
 {
 	printf("%i\n",i -> dato);
-	i = i -> siguiente;
+	i = i-> siguiente;
 }
 
 
-return (0);
+return (0)
 
 }
